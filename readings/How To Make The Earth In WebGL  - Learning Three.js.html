@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)http://learningthreejs.com/blog/2013/09/16/how-to-make-the-earth-in-webgl/ -->
+<html class=" js video maskImage placeholder" lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>How To Make The Earth In WebGL? - Learning Three.js</title>
+  <meta name="author" content="Jerome Etienne">
+
+  
+  <meta name="description" content="So today we gonna learn how to display the earth in webgl.
+That will be a nice introduction to material and textures.
+I got the idea while coding …">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+  <link rel="canonical" href="./How To Make The Earth In WebGL  - Learning Three.js_files/How To Make The Earth In WebGL  - Learning Three.js.html">
+  <link href="http://learningthreejs.com/favicon.png" rel="icon">
+  <link href="http://learningthreejs.com/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/LearningThreejs" rel="alternate" title="Learning Three.js" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="./How To Make The Earth In WebGL  - Learning Three.js_files/css" rel="stylesheet" type="text/css">
+<link href="./How To Make The Earth In WebGL  - Learning Three.js_files/css(1)" rel="stylesheet" type="text/css">
+
+  <script src="./How To Make The Earth In WebGL  - Learning Three.js_files/cb=gapi.loaded_1" async=""></script><script src="./How To Make The Earth In WebGL  - Learning Three.js_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./How To Make The Earth In WebGL  - Learning Three.js_files/plusone.js" gapi_processed="true"></script><script type="text/javascript" async="" src="./How To Make The Earth In WebGL  - Learning Three.js_files/ga.js"></script><script src="./How To Make The Earth In WebGL  - Learning Three.js_files/modernizr-2.0.js"></script>
+  <script src="./How To Make The Earth In WebGL  - Learning Three.js_files/ender.js"></script>
+  <script src="./How To Make The Earth In WebGL  - Learning Three.js_files/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-4037844-19']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+<script type="text/javascript" async="" src="./How To Make The Earth In WebGL  - Learning Three.js_files/embed.js"></script><script type="text/javascript" async="" src="./How To Make The Earth In WebGL  - Learning Three.js_files/widgets.js"></script><script type="text/javascript" src="./How To Make The Earth In WebGL  - Learning Three.js_files/LearningThreejs.json" async=""></script></head>
+
+<body data-twttr-rendered="true">
+  <header role="banner"><hgroup>
+  <h1><a href="http://learningthreejs.com/">Learning Three.js</a></h1>
+  
+    <h2>or WebGL for Dummies</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://feeds.feedburner.com/LearningThreejs" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:learningthreejs.com">
+    <input class="search" type="text" name="q" results="0" placeholder="Search">
+  </fieldset><fieldset class="mobile-nav"><select><option value="">Navigate…</option><option value="http://learningthreejs.com/">» Blog</option><option value="http://learningthreejs.com/blog/archives">» Archives</option><option value="http://jeromeetienne.github.io/videobrowser4learningthreejs/">» Videos</option><option value="http://learningthreejs.com/about">» About</option><option value="http://feeds.feedburner.com/LearningThreejs">» RSS</option></select></fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="http://learningthreejs.com/">Blog</a></li>
+  <li><a href="http://learningthreejs.com/blog/archives">Archives</a></li>
+  <li><a href="http://jeromeetienne.github.io/videobrowser4learningthreejs/">Videos</a></li>
+  <li><a href="http://learningthreejs.com/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">How to Make the Earth in WebGL?</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-16T10:13:00+02:00" pubdate="" data-updated="true">Sep 16<span>th</span>, 2013</time>
+        
+        
+          </p><div class="sharing" style="text-align: right;">
+  
+  <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="./How To Make The Earth In WebGL  - Learning Three.js_files/tweet_button.1397165098.html" class="twitter-share-button twitter-tweet-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 107px; height: 20px;"></iframe>
+  
+  
+  <div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background-color: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px; background-position: initial initial; background-repeat: initial initial;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I0_1397687321830" name="I0_1397687321830" src="./How To Make The Earth In WebGL  - Learning Three.js_files/fastbutton.html" data-gapiattached="true" title="+1"></iframe></div>
+  
+  
+</div>
+
+        
+     <p></p>
+    
+  </header>
+
+
+<div class="entry-content"><p>So today we gonna learn how to display the earth in webgl.
+That will be a nice introduction to material and textures.
+I got the idea while coding
+<a href="http://github.com/jeromeetienne/threex.planets/">threex.planets</a>,
+a three.js extension to easily display all the planets from the solar system based on
+<a href="http://planetpixelemporium.com/planets.html">planetpixelemporium</a>. With this post, you will be able to feel like astronauts conquering the outer space for the day and creating your own galaxy. :)</p>
+
+<div class="flash-video"><div><iframe width="425" height="349" src="./How To Make The Earth In WebGL  - Learning Three.js_files/-3ZCZUgvmo0.html" frameborder="0" allowfullscreen=""></iframe></div></div>
+
+
+
+
+<!-- more -->
+
+
+<p>So we want to render the earth with three.js… It is surprisingly easy to code.
+We gonna use the textures
+from
+<a href="http://planetpixelemporium.com/planets.html">planetpixelemporium</a>
+and proceed step by step.
+But first let me show you the
+<a href="./How To Make The Earth In WebGL  - Learning Three.js_files/index.html">demo we gonna write</a> below.</p>
+
+<iframe width="100%" height="349" src="./How To Make The Earth In WebGL  - Learning Three.js_files/index.html" frameborder="0" allowfullscreen=""></iframe>
+
+
+<p>First the geometry with a sphere, then each texture and their various effects.
+We will even add animations to make it more realistic and put it in context with
+a star field background.</p>
+
+<h2>Let’s Do a Plain Sphere</h2>
+
+<p><img class="right" src="./How To Make The Earth In WebGL  - Learning Three.js_files/earth-color.png" width="320" height="240"></p>
+
+<p>Well we first create a geometry for the sphere, then
+we add a phong material,
+create a mesh from them
+and add it to the scene.
+The first parameter, <code>0.5</code> is the radius.
+The second parameter, <code>32</code>, is the segments in width
+and
+the third, <code>32</code>, is the segments in height.
+We make it quite detailed for it to be nicer.
+We pick <code>THREE.MeshPhongMaterial</code> to get
+<a href="http://en.wikipedia.org/wiki/Phong_shading">phong shading</a>.
+It provides <a href="http://en.wikipedia.org/wiki/Specular_reflection">specular reflection</a>
+which will be used to get a shiny sea.</p>
+
+<br clear="both">
+
+
+
+
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tbody><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">geometry</span>   <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">SphereGeometry</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">material</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">MeshPhongMaterial</span><span class="p">()</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">earthMesh</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">Mesh</span><span class="p">(</span><span class="nx">geometry</span><span class="p">,</span> <span class="nx">material</span><span class="p">)</span>
+</span><span class="line"><span class="nx">scene</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">earthMesh</span><span class="p">)</span>
+</span></code></pre></td></tr></tbody></table></div></figure>
+
+
+<p>Cool but rather flat… What about a diffuse texture to add some colors to our sphere.</p>
+
+<h2>Let’s Add a Diffuse Texture</h2>
+
+<p><img class="right" src="./How To Make The Earth In WebGL  - Learning Three.js_files/earth-diffuse.png" width="320" height="240">
+<img class="left" src="./How To Make The Earth In WebGL  - Learning Three.js_files/earthmap1k.jpg" width="410" height="240"></p>
+
+<p>Above you can see the
+<a href="http://wiki.splashdamage.com/index.php/Basic_Texture_Overview">diffuse texture</a>
+from
+<a href="http://planetpixelemporium.com/planets.html">planetpixelemporium</a> to set the main color
+of the surface.
+When we apply it to a sphere, we get the image on the right.
+Here is the code to produce it.</p>
+
+<br clear="both">
+
+
+
+
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tbody><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">material</span><span class="p">.</span><span class="nx">map</span>    <span class="o">=</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">ImageUtils</span><span class="p">.</span><span class="nx">loadTexture</span><span class="p">(</span><span class="s1">'images/earthmap1k.jpg'</span><span class="p">)</span>
+</span></code></pre></td></tr></tbody></table></div></figure>
+
+
+<p>Hmm rather cool but more relief on the earth would be cool. What about a bump texture now ?</p>
+
+<h2>Let’s Add a Bump Texture</h2>
+
+<p><img class="right" src="./How To Make The Earth In WebGL  - Learning Three.js_files/earth-bump.png" width="320" height="240">
+<img class="left" src="./How To Make The Earth In WebGL  - Learning Three.js_files/earthbump1k.jpg" width="410" height="240"></p>
+
+<p>Above is the bump map we use.
+According to <a href="http://en.wikipedia.org/wiki/Bump_mapping">wikipedia definition</a>,
+a bump map “perturbates the surface normals of the object
+using the perturbed normal during lighting calculations”.
+Each of its pixels acts as a height on the surface.
+See the result on the right.
+The mountains appear more clearly thanks to their shadow.</p>
+
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tbody><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">material</span><span class="p">.</span><span class="nx">bumpMap</span>    <span class="o">=</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">ImageUtils</span><span class="p">.</span><span class="nx">loadTexture</span><span class="p">(</span><span class="s1">'images/earthbump1k.jpg'</span><span class="p">)</span>
+</span><span class="line"><span class="nx">material</span><span class="p">.</span><span class="nx">bumpScale</span> <span class="o">=</span> <span class="mf">0.05</span>
+</span></code></pre></td></tr></tbody></table></div></figure>
+
+
+<p>It is possible to change how much the map affects lighting with <code>bumpScale</code> parameter.
+Play with it to fit your needs. Now that we change the heights on various parts of the
+earth, let’s change its shininess with a specular texture.</p>
+
+<h2>Let’s Add a Specular Texture</h2>
+
+<p><img class="right" src="./How To Make The Earth In WebGL  - Learning Three.js_files/earth-specular.png" width="320" height="240">
+<img class="left" src="./How To Make The Earth In WebGL  - Learning Three.js_files/earthspec1k.jpg" width="410" height="240"></p>
+
+<p>Above is the <a href="http://wiki.splashdamage.com/index.php/Specular_Maps">specular map</a> we use.
+Each pixel determines the intensity of
+<a href="http://en.wikipedia.org/wiki/Specularity">specularity</a>.
+In this case, only the sea is specular because water reflects water more than earth.
+You can see it on the left with the white halo in the Gulf of Mexico.
+You can control the specular color with <code>.specular</code> parameter.</p>
+
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tbody><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">material</span><span class="p">.</span><span class="nx">specularMap</span>    <span class="o">=</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">ImageUtils</span><span class="p">.</span><span class="nx">loadTexture</span><span class="p">(</span><span class="s1">'images/earthspec1k.jpg'</span><span class="p">)</span>
+</span><span class="line"><span class="nx">material</span><span class="p">.</span><span class="nx">specular</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">Color</span><span class="p">(</span><span class="s1">'grey'</span><span class="p">)</span>
+</span></code></pre></td></tr></tbody></table></div></figure>
+
+
+<p>Yeah but all this water, where does it go when it is hot ? It evaporates in the sky
+and becomes clouds.</p>
+
+<h2>Let’s Add a Cloud Layer</h2>
+
+<p><img class="left" src="./How To Make The Earth In WebGL  - Learning Three.js_files/earthcloudmap.jpg" width="320" height="240">
+<img class="right" src="./How To Make The Earth In WebGL  - Learning Three.js_files/earth-cloud.png" width="320" height="240">
+<img class="left" src="./How To Make The Earth In WebGL  - Learning Three.js_files/earthcloudmaptrans.jpg" width="360" height="240"></p>
+
+<br clear="both">
+
+
+<p>We build <code>canvasCloud</code> and use it as texture.
+It is based on the jpg images you see above:
+one for the color and the other for the transparency.
+We do that because
+<a href="http://en.wikipedia.org/wiki/JPEG">jpg</a>
+doesn’t handle an alpha channel.
+So you need to make the code to build the texture based on those images.</p>
+
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tbody><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">geometry</span>   <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">SphereGeometry</span><span class="p">(</span><span class="mf">0.51</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">material</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">MeshPhongMaterial</span><span class="p">({</span>
+</span><span class="line">  <span class="nx">map</span>     <span class="o">:</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">Texture</span><span class="p">(</span><span class="nx">canvasCloud</span><span class="p">),</span>
+</span><span class="line">  <span class="nx">side</span>        <span class="o">:</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">DoubleSide</span><span class="p">,</span>
+</span><span class="line">  <span class="nx">opacity</span>     <span class="o">:</span> <span class="mf">0.8</span><span class="p">,</span>
+</span><span class="line">  <span class="nx">transparent</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class="line">  <span class="nx">depthWrite</span>  <span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span><span class="line"><span class="p">})</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">cloudMesh</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">Mesh</span><span class="p">(</span><span class="nx">geometry</span><span class="p">,</span> <span class="nx">material</span><span class="p">)</span>
+</span><span class="line"><span class="nx">earthMesh</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">cloudMesh</span><span class="p">)</span>
+</span></code></pre></td></tr></tbody></table></div></figure>
+
+
+<p>We attach the cloudMesh to the earthMesh, thus they will move together.
+Notice the parameters of the material.
+We disable <code>depthWrite</code> and set <code>transparent</code> to warn three.js the
+cloud mesh is transparent.
+We set <code>side</code> to <code>DoubleSide</code> thus both sides will be visible.
+This avoids artefacts to be on the edge of the earth.
+Finaly we set <code>opacity</code> to make them more translucide.
+The output is quite convincing but rather static. Let’s see what we can do about that!</p>
+
+<h2>“And Yet it Moves”</h2>
+
+<p>This is what
+<a href="http://en.wikipedia.org/wiki/Galileo_Galilei">Galileo Galilei</a> said
+about the earth. This sentence has a
+<a href="http://en.wikipedia.org/wiki/And_yet_it_moves">interesting story</a>.
+So i am thinking it would be cool to make our earth move too.
+In your render loop, you simply do this</p>
+
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tbody><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">onRenderFcts</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">delta</span><span class="p">,</span> <span class="nx">now</span><span class="p">){</span>
+</span><span class="line">  <span class="nx">earthMesh</span><span class="p">.</span><span class="nx">rotation</span><span class="p">.</span><span class="nx">y</span>  <span class="o">+=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">32</span> <span class="o">*</span> <span class="nx">delta</span>
+</span><span class="line"><span class="p">})</span>
+</span></code></pre></td></tr></tbody></table></div></figure>
+
+
+<p>As a last step, we gonna animate the cloud layer too, to make it more realistic.</p>
+
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tbody><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">onRenderFcts</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">delta</span><span class="p">,</span> <span class="nx">now</span><span class="p">){</span>
+</span><span class="line">  <span class="nx">cloudMesh</span><span class="p">.</span><span class="nx">rotation</span><span class="p">.</span><span class="nx">y</span>  <span class="o">+=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">16</span> <span class="o">*</span> <span class="nx">delta</span>
+</span><span class="line"><span class="p">})</span>
+</span></code></pre></td></tr></tbody></table></div></figure>
+
+
+<p>Definitely better, but still we feel there is something missing.
+What do we see in space ? Stars! duh :)</p>
+
+<h2>Let’s Add a Star Field</h2>
+
+<p><img class="right" src="./How To Make The Earth In WebGL  - Learning Three.js_files/galaxy_starfield.png" width="320" height="240"></p>
+
+<p>We will see how to render the galaxy starfield.
+The star field as you see it in the demo is an “environment sphere”,
+aka it is a large sphere, we are in the center and we see what’s inside.
+So we ask three.js to show the backside of the faces.
+And we use the texture above as diffuse.
+The above image is smaller than the actual one so you barely see the stars.</p>
+
+<br clear="both">
+
+
+
+
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tbody><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="c1">// create the geometry sphere</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">geometry</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">SphereGeometry</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+</span><span class="line"><span class="c1">// create the material, using a texture of startfield</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">material</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">MeshBasicMaterial</span><span class="p">()</span>
+</span><span class="line"><span class="nx">material</span><span class="p">.</span><span class="nx">map</span>   <span class="o">=</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">ImageUtils</span><span class="p">.</span><span class="nx">loadTexture</span><span class="p">(</span><span class="s1">'images/galaxy_starfield.png'</span><span class="p">)</span>
+</span><span class="line"><span class="nx">material</span><span class="p">.</span><span class="nx">side</span>  <span class="o">=</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">BackSide</span>
+</span><span class="line"><span class="c1">// create the mesh based on geometry and material</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">mesh</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nx">Mesh</span><span class="p">(</span><span class="nx">geometry</span><span class="p">,</span> <span class="nx">material</span><span class="p">)</span>
+</span></code></pre></td></tr></tbody></table></div></figure>
+
+
+<h2>threex.planets - All Solar System’s Planets Done For You</h2>
+
+<p>While i was at it, i made
+<a href="https://github.com/jeromeetienne/threex.planets/">threex.planets</a>,
+a
+<a href="http://jeromeetienne.github.io/threex/">threex</a>
+extension for
+<a href="http://threejs.org/">three.js</a>.
+It provides all the planets from the solar system to be easily usable in your own demo or games.
+It is based on
+<a href="http://planetpixelemporium.com/planets.html">planetpixelemporium</a>
+textures using the same technics described in this post.
+You can see it live
+<a href="http://jeromeetienne.github.io/threex.planets/examples/select.html">here</a>.
+First, the mythical
+<a href="http://jeromeetienne.github.io/threex.planets/examples/select.html#Sun">sun</a>,
+<a href="http://jeromeetienne.github.io/threex.planets/examples/select.html#Mercury">mercury</a> and
+<a href="http://jeromeetienne.github.io/threex.planets/examples/select.html#Venus">venus</a>.</p>
+
+<p><img class="left" src="./How To Make The Earth In WebGL  - Learning Three.js_files/planets-sun.png" width="230" height="172">
+<img class="left" src="./How To Make The Earth In WebGL  - Learning Three.js_files/planets-mercury.png" width="230" height="172">
+<img class="left" src="./How To Make The Earth In WebGL  - Learning Three.js_files/planets-venus.png" width="230" height="172"></p>
+
+<br clear="both">
+
+
+<p>Now the best known, the
+<a href="http://jeromeetienne.github.io/threex.planets/examples/select.html#Earth">earth</a>
+with its cloud that we previously detailed in this post, the
+<a href="http://jeromeetienne.github.io/threex.planets/examples/select.html#Moon">moon</a>
+which isn’t
+an actual planet but still we could not do without, and
+<a href="http://jeromeetienne.github.io/threex.planets/examples/select.html#Mars">mars</a>
+with the little green people.</p>
+
+<p><img class="left" src="./How To Make The Earth In WebGL  - Learning Three.js_files/planets-earth.png" width="230" height="172">
+<img class="left" src="./How To Make The Earth In WebGL  - Learning Three.js_files/planets-moon.png" width="230" height="172">
+<img class="left" src="./How To Make The Earth In WebGL  - Learning Three.js_files/planets-mars.png" width="230" height="172"></p>
+
+<br clear="both">
+
+
+<p>Follow,
+<a href="http://jeromeetienne.github.io/threex.planets/examples/select.html#Jupiter">jupiter</a>,
+<a href="http://jeromeetienne.github.io/threex.planets/examples/select.html#Saturn">saturn</a> and
+<a href="http://jeromeetienne.github.io/threex.planets/examples/select.html#Uranus">uranus</a>.
+I love the rings there. I added shadow casting to enhance realism.</p>
+
+<p><img class="left" src="./How To Make The Earth In WebGL  - Learning Three.js_files/planets-jupiter.png" width="230" height="172">
+<img class="left" src="./How To Make The Earth In WebGL  - Learning Three.js_files/planets-saturn.png" width="230" height="172">
+<img class="left" src="./How To Make The Earth In WebGL  - Learning Three.js_files/planets-uranus.png" width="230" height="172"></p>
+
+<br clear="both">
+
+
+<p>And the last two, the furthest ones,
+<a href="http://jeromeetienne.github.io/threex.planets/examples/select.html#Neptune">neptune</a>
+and
+<a href="http://jeromeetienne.github.io/threex.planets/examples/select.html#Pluto">pluto</a></p>
+
+<p><img class="left" src="./How To Make The Earth In WebGL  - Learning Three.js_files/planets-neptune.png" width="230" height="172">
+<img class="left" src="./How To Make The Earth In WebGL  - Learning Three.js_files/planets-pluto.png" width="230" height="172"></p>
+
+<br clear="both">
+
+
+<h2>Conclusion</h2>
+
+<p>In this post, we saw how to make a nice looking earth with animated clouds with a star field in
+the background. I think it is a nice result for the amount of work.
+I hope it was useful to discuver the various roles of textures.
+Now you can use this to make even nicer demos, like
+<a href="http://jeromeetienne.github.io/threex.planets/examples/earth.html">this one</a>.
+It shows the same Earth, that we just saw how to do, with the moon close to it.
+We add shadow casting and a nice atmosphere shader and the result is quite convincing.</p>
+
+<p>That’s all for today folks. Have Fun!</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jerome Etienne</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-16T10:13:00+02:00" pubdate="" data-updated="true">Sep 16<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class="category" href="http://learningthreejs.com/blog/categories/three-dot-js/">three.js</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing" style="text-align: right;">
+  
+  <iframe id="twitter-widget-1" scrolling="no" frameborder="0" allowtransparency="true" src="./How To Make The Earth In WebGL  - Learning Three.js_files/tweet_button.1397165098(1).html" class="twitter-share-button twitter-tweet-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 107px; height: 20px;"></iframe>
+  
+  
+  <div id="___plusone_1" style="text-indent: 0px; margin: 0px; padding: 0px; background-color: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px; background-position: initial initial; background-repeat: initial initial;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I1_1397687321833" name="I1_1397687321833" src="./How To Make The Earth In WebGL  - Learning Three.js_files/fastbutton(1).html" data-gapiattached="true" title="+1"></iframe></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="http://learningthreejs.com/blog/2013/08/02/how-to-do-a-procedural-city-in-100lines/" title="Previous Post: How To Do A Procedural City In 100 Lines">« How To Do A Procedural City In 100 Lines</a>
+      
+      
+        <a class="basic-alignment right" href="http://learningthreejs.com/blog/2013/12/31/zero-to-nyancat-in-30-seconds-flat/" title="Next Post: Zero To Nyancat in 30 Seconds Flat!">Zero To Nyancat in 30 Seconds Flat! »</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><iframe id="dsq-2" data-disqus-uid="2" allowtransparency="true" frameborder="0" tabindex="0" title="Disqus" width="100%" src="./How To Make The Earth In WebGL  - Learning Three.js_files/saved_resource.html" scrolling="no" horizontalscrolling="no" verticalscrolling="no" style="width: 100% !important; border: none !important; overflow: hidden !important; height: 2932px !important;"></iframe><iframe id="dsq-indicator-north" data-disqus-uid="indicator-north" allowtransparency="true" frameborder="0" tabindex="0" title="Disqus" scrolling="no" style="width: 789px !important; border: none !important; overflow: hidden !important; top: 0px !important; min-width: 789px !important; max-width: 789px !important; position: fixed !important; z-index: 2147483646 !important; height: 29px !important; min-height: 29px !important; max-height: 29px !important; display: none !important;"></iframe><iframe id="dsq-indicator-south" data-disqus-uid="indicator-south" allowtransparency="true" frameborder="0" tabindex="0" title="Disqus" scrolling="no" style="width: 789px !important; border: none !important; overflow: hidden !important; bottom: 0px !important; min-width: 789px !important; max-width: 789px !important; position: fixed !important; z-index: 2147483646 !important; height: 29px !important; min-height: 29px !important; max-height: 29px !important; display: none !important;"></iframe></div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section class="odd">
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="http://learningthreejs.com/blog/2014/02/08/have-you-seen-yourself-when-you-are-drunk/">Have You Seen YourSelf when You Are Drunk ? - making of a fun WebGL Demo</a>
+      </li>
+    
+      <li class="post">
+        <a href="http://learningthreejs.com/blog/2014/01/10/flying-spaceship-minigame/">Game Workshop: Let's Do a Fighting Spaceship Minigame Together</a>
+      </li>
+    
+      <li class="post">
+        <a href="http://learningthreejs.com/blog/2013/12/31/zero-to-nyancat-in-30-seconds-flat/">Zero To Nyancat in 30 Seconds Flat!</a>
+      </li>
+    
+      <li class="post">
+        <a href="./How To Make The Earth In WebGL  - Learning Three.js_files/How To Make The Earth In WebGL  - Learning Three.js.html">How To Make The Earth In WebGL?</a>
+      </li>
+    
+      <li class="post">
+        <a href="http://learningthreejs.com/blog/2013/08/02/how-to-do-a-procedural-city-in-100lines/">How To Do A Procedural City In 100 Lines</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+<section class="even">
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("LearningThreejs", 4, false);
+    });
+  </script>
+  <script src="./How To Make The Earth In WebGL  - Learning Three.js_files/twitter.js" type="text/javascript"> </script>
+  
+    <iframe id="twitter-widget-2" scrolling="no" frameborder="0" allowtransparency="true" src="./How To Make The Earth In WebGL  - Learning Three.js_files/follow_button.1397165098.html" class="twitter-follow-button twitter-follow-button" title="Twitter Follow Button" data-twttr-rendered="true" style="width: 158px; height: 20px;"></iframe>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    <span class="toggle-sidebar"></span></div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright © 2014 - Jerome Etienne -
+  <span class="credit">Powered by <a href="http://octopress.org/">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'learningthreejs';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://learningthreejs.com/blog/2013/09/16/how-to-make-the-earth-in-webgl/';
+        var disqus_url = 'http://learningthreejs.com/blog/2013/09/16/how-to-make-the-earth-in-webgl/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+
+
+<iframe name="oauth2relay352884112" id="oauth2relay352884112" src="./How To Make The Earth In WebGL  - Learning Three.js_files/postmessageRelay.html" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe><audio id="vocapp-audio-dummy" preload="auto"></audio></body></html>

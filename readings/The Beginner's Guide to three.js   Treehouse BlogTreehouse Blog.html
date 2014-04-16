@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)http://blog.teamtreehouse.com/the-beginners-guide-to-three-js -->
+<html lang="en-US" prefix="og: http://ogp.me/ns#"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>The Beginner's Guide to three.js | Treehouse BlogTreehouse Blog</title>
+<link href="http://d15dxvojnvxp1x.cloudfront.net/assets/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="stylesheet" type="text/css" media="all" href="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/style.css">
+<script src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/5204.js" async="" type="text/javascript"></script><script src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/cb=gapi.loaded_1" async=""></script><script src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/cb=gapi.loaded_0" async=""></script><script id="facebook-jssdk" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/all.js"></script><script type="text/javascript" async="" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/mixpanel-2.2.min.js"></script><script type="text/javascript" async="" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/ga.js"></script><script type="text/javascript" async="" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/ga.js"></script><script src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/ss-legacy.js"></script>
+<script src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/jquery.min.js"></script>
+<script src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/custom.js"></script>
+<script src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/respond.min.js"></script>
+<link rel="pingback" href="http://blog.teamtreehouse.com/xmlrpc.php">
+<!--[if lt IE 9]>
+<script src="http://blog.teamtreehouse.com/wp-content/themes/treehouse-wp-theme-1.2.7/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+
+
+<script type="text/javascript">
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-25670760-10']);
+_gaq.push(['_trackPageview']);
+
+  (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+              })();
+
+</script>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1017883234;
+var google_conversion_label = "hbMzCI7rvAMQ4tSu5QM";
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/conversion.js">
+</script><script src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/nonSecureAnonymousFramework"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_connect_bar_container div,.fb_connect_bar_container span,.fb_connect_bar_container a,.fb_connect_bar_container img,.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode=="CSS1Compat"? document.documentElement.scrollTop+"px":body.scrollTop+"px")}.fb_connect_bar{position:relative;margin:auto;height:100%;width:100%;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:"lucida grande", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}.fb_connect_bar a:hover{color:#fff}.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}.fb_connect_bar div a,.fb_connect_bar span,.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}.fb_connect_bar .fb_buttons{float:right;margin-top:7px}
+.fbpluginrecommendationsbarleft,.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}.fbpluginrecommendationsbarleft{left:10px}.fbpluginrecommendationsbarright{right:10px}</style><style type="text/css">* html #li_ui_li_gen_1397685484838_0 a#li_ui_li_gen_1397685484838_0-link{height:1% !important;}#li_ui_li_gen_1397685484838_0{position:relative !important;overflow:visible !important;display:block !important;}#li_ui_li_gen_1397685484838_0 a#li_ui_li_gen_1397685484838_0-link{border:0 !important;height:20px !important;text-decoration:none !important;padding:0 !important;margin:0 !important;display:inline-block !important;}#li_ui_li_gen_1397685484838_0 a#li_ui_li_gen_1397685484838_0-link:link, #li_ui_li_gen_1397685484838_0 a#li_ui_li_gen_1397685484838_0-link:visited, #li_ui_li_gen_1397685484838_0 a#li_ui_li_gen_1397685484838_0-link:hover, #li_ui_li_gen_1397685484838_0 a#li_ui_li_gen_1397685484838_0-link:active{border:0 !important;text-decoration:none !important;}#li_ui_li_gen_1397685484838_0 a#li_ui_li_gen_1397685484838_0-link:after{content:"." !important;display:block !important;clear:both !important;visibility:hidden !important;line-height:0 !important;height:0 !important;}#li_ui_li_gen_1397685484838_0 #li_ui_li_gen_1397685484838_0-logo{background-image:url(http://s.c.lnkd.licdn.com/scds/common/u/images/apps/connect/sprites/sprite_connect_v14.png) !important;background-position:0px -276px !important;background-repeat:no-repeat !important;background-size:initial !important;cursor:pointer !important;border:0 !important;text-indent:-9999em !important;overflow:hidden !important;padding:0 !important;margin:0 !important;position:absolute !important;left:0px !important;top:0px !important;display:block !important;width:20px !important;height:20px !important;float:right !important;border-radius:0 !important;-webkit-border-radius:0 !important;border-top-right-radius:2px !important;border-bottom-right-radius:2px !important;-webkit-border-top-right-radius:2px !important;-webkit-border-bottom-right-radius:2px !important;}#li_ui_li_gen_1397685484838_0.hovered #li_ui_li_gen_1397685484838_0-logo{background-position:-20px -276px !important;}#li_ui_li_gen_1397685484838_0.clicked #li_ui_li_gen_1397685484838_0-logo, #li_ui_li_gen_1397685484838_0.down #li_ui_li_gen_1397685484838_0-logo{background-position:-40px -276px !important;}.IN-shadowed #li_ui_li_gen_1397685484838_0 #li_ui_li_gen_1397685484838_0-logo{}#li_ui_li_gen_1397685484838_0 #li_ui_li_gen_1397685484838_0-title{color:#333 !important;cursor:pointer !important;display:block !important;white-space:nowrap !important;float:left !important;margin-left:1px !important;vertical-align:top !important;overflow:hidden !important;text-align:center !important;height:18px !important;padding:0 4px 0 23px !important;border:1px solid #000 !important;border-top-color:#E2E2E2 !important;border-right-color:#BFBFBF !important;border-bottom-color:#B9B9B9 !important;border-left-color:#E2E2E2 !important;border-left:0 !important;text-shadow:#FFFFFF -1px 1px 0 !important;line-height:20px !important;border-radius:0 !important;-webkit-border-radius:0 !important;border-top-right-radius:2px !important;border-bottom-right-radius:2px !important;-webkit-border-top-right-radius:2px !important;-webkit-border-bottom-right-radius:2px !important;background-color:#ECECEC !important;background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#FEFEFE), color-stop(100%,#ECECEC)) !important; background-image: -webkit-linear-gradient(top, #FEFEFE 0%, #ECECEC 100%) !important;}#li_ui_li_gen_1397685484838_0.hovered #li_ui_li_gen_1397685484838_0-title{border:1px solid #000 !important;border-top-color:#ABABAB !important;border-right-color:#9A9A9A !important;border-bottom-color:#787878 !important;border-left-color:#04568B !important;border-left:0 !important;background-color:#EDEDED !important;background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#EDEDED), color-stop(100%,#DEDEDE)) !important; background-image: -webkit-linear-gradient(top, #EDEDED 0%, #DEDEDE 100%) !important;}#li_ui_li_gen_1397685484838_0.clicked #li_ui_li_gen_1397685484838_0-title, #li_ui_li_gen_1397685484838_0.down #li_ui_li_gen_1397685484838_0-title{color:#666 !important;border:1px solid #000 !important;border-top-color:#B6B6B6 !important;border-right-color:#B3B3B3 !important;border-bottom-color:#9D9D9D !important;border-left-color:#49627B !important;border-left:0 !important;background-color:#DEDEDE !important;background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#E3E3E3), color-stop(100%,#EDEDED)) !important; background-image: -webkit-linear-gradient(top, #E3E3E3 0%, #EDEDED 100%) !important;}.IN-shadowed #li_ui_li_gen_1397685484838_0 #li_ui_li_gen_1397685484838_0-title{}.IN-shadowed #li_ui_li_gen_1397685484838_0.hovered #li_ui_li_gen_1397685484838_0-title{}.IN-shadowed #li_ui_li_gen_1397685484838_0.clicked #li_ui_li_gen_1397685484838_0-title, .IN-shadowed #li_ui_li_gen_1397685484838_0.down #li_ui_li_gen_1397685484838_0-title{}#li_ui_li_gen_1397685484838_0 #li_ui_li_gen_1397685484838_0-title-text, #li_ui_li_gen_1397685484838_0 #li_ui_li_gen_1397685484838_0-title-text *{color:#333 !important;font-size:11px !important;font-family:Arial, sans-serif !important;font-weight:bold !important;font-style:normal !important;-webkit-font-smoothing:antialiased !important;display:inline-block !important;background:transparent none !important;vertical-align:top !important;height:18px !important;line-height:20px !important;float:none !important;}#li_ui_li_gen_1397685484838_0 #li_ui_li_gen_1397685484838_0-title-text strong{font-weight:bold !important;}#li_ui_li_gen_1397685484838_0 #li_ui_li_gen_1397685484838_0-title-text em{font-style:italic !important;}#li_ui_li_gen_1397685484838_0.hovered #li_ui_li_gen_1397685484838_0-title-text, #li_ui_li_gen_1397685484838_0.hovered #li_ui_li_gen_1397685484838_0-title-text *{color:#000 !important;}#li_ui_li_gen_1397685484838_0.clicked #li_ui_li_gen_1397685484838_0-title-text, #li_ui_li_gen_1397685484838_0.down #li_ui_li_gen_1397685484838_0-title-text, #li_ui_li_gen_1397685484838_0.clicked #li_ui_li_gen_1397685484838_0-title-text *, #li_ui_li_gen_1397685484838_0.down #li_ui_li_gen_1397685484838_0-title-text *{color:#666 !important;}#li_ui_li_gen_1397685484838_0 #li_ui_li_gen_1397685484838_0-title #li_ui_li_gen_1397685484838_0-mark{display:inline-block !important;width:0px !important;overflow:hidden !important;}.success #li_ui_li_gen_1397685484838_0 #li_ui_li_gen_1397685484838_0-title{color:#333 !important;border-top-color:#E2E2E2 !important;border-right-color:#BFBFBF !important;border-bottom-color:#B9B9B9 !important;border-left-color:#E2E2E2 !important;background-color:#ECECEC !important;background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#FEFEFE), color-stop(100%,#ECECEC)) !important; background-image: -webkit-linear-gradient(top, #FEFEFE 0%, #ECECEC 100%) !important;}.success #li_ui_li_gen_1397685484838_0 #li_ui_li_gen_1397685484838_0-title-text, .success #li_ui_li_gen_1397685484838_0 #li_ui_li_gen_1397685484838_0-title-text *{color:#333 !important;}.IN-shadowed .success #li_ui_li_gen_1397685484838_0 #li_ui_li_gen_1397685484838_0-title{}.success #li_ui_li_gen_1397685484838_0.hovered #li_ui_li_gen_1397685484838_0-title{color:#000 !important;border-top-color:#ABABAB !important;border-right-color:#9A9A9A !important;border-bottom-color:#787878 !important;border-left-color:#04568B !important;background-color:#EDEDED !important;background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#EDEDED), color-stop(100%,#DEDEDE)) !important; background-image: -webkit-linear-gradient(top, #EDEDED 0%, #DEDEDE 100%) !important;}.success #li_ui_li_gen_1397685484838_0.hovered #li_ui_li_gen_1397685484838_0-title-text, .success #li_ui_li_gen_1397685484838_0.hovered #li_ui_li_gen_1397685484838_0-title-text *{color:#000 !important;}.success #li_ui_li_gen_1397685484838_0.clicked #li_ui_li_gen_1397685484838_0-title, .success #li_ui_li_gen_1397685484838_0.down #li_ui_li_gen_1397685484838_0-title{color:#666 !important;border-top-color:#B6B6B6 !important;border-right-color:#B3B3B3 !important;border-bottom-color:#9D9D9D !important;border-left-color:#49627B !important;background-color:#DEDEDE !important;background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#E3E3E3), color-stop(100%,#EDEDED)) !important; background-image: -webkit-linear-gradient(top, #E3E3E3 0%, #EDEDED 100%) !important;}.success #li_ui_li_gen_1397685484838_0.clicked #li_ui_li_gen_1397685484838_0-title-text, .success #li_ui_li_gen_1397685484838_0.down #li_ui_li_gen_1397685484838_0-title-text, .success #li_ui_li_gen_1397685484838_0.clicked #li_ui_li_gen_1397685484838_0-title-text *, .success #li_ui_li_gen_1397685484838_0.down #li_ui_li_gen_1397685484838_0-title-text *{color:#666 !important;}.IN-shadowed .success #li_ui_li_gen_1397685484838_0.clicked #li_ui_li_gen_1397685484838_0-title, .IN-shadowed .success #li_ui_li_gen_1397685484838_0.down #li_ui_li_gen_1397685484838_0-title{}#li_ui_li_gen_1397685484847_1-container.IN-top {display:inline-block !important;overflow:visible !important;position:relative !important;height:42px !important;line-height:1px !important;cursor:pointer !important;}#li_ui_li_gen_1397685484847_1.IN-top {display:inline-block !important;height:42px !important;width:57px !important;text-align:center !important;background-image:url(http://s.c.lnkd.licdn.com/scds/common/u/images/apps/connect/sprites/sprite_connect_v14.png) !important;background-color:transparent !important;background-repeat:no-repeat !important;background-position:-150px top !important;}#li_ui_li_gen_1397685484847_1-content.IN-top {display:inline !important;font-size:16px !important;color:#04558B !important;font-weight:bold !important;font-family:Arial, sans-serif !important;line-height:38px !important;}#li_ui_li_gen_1397685484847_1-container.IN-empty #li_ui_li_gen_1397685484847_1-inner.IN-top {background-image:url(http://s.c.lnkd.licdn.com/scds/common/u/images/apps/connect/sprites/sprite_connect_v14.png) !important;background-color:transparent !important;background-repeat:no-repeat !important;background-position:0px -20px !important;overflow:hidden !important;margin:5px auto 0 auto !important;width:26px !important;height:26px !important;display:block !important;}#li_ui_li_gen_1397685484847_1-container.IN-empty #li_ui_li_gen_1397685484847_1-content.IN-top {text-indent:-999px !important;display:inline-block !important;}#li_ui_li_gen_1397685484847_1-container.IN-hidden #li_ui_li_gen_1397685484847_1 {display:none !important;}</style></head><body class="single single-post postid-22261 single-format-standard singular two-column right-sidebar" data-twttr-rendered="true"><iframe name="google_conversion_frame" title="Google conversion frame" width="300" height="13" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/saved_resource(1).html" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no">&lt;img height="1" width="1" border="0" alt="" src="http://googleads.g.doubleclick.net/pagead/viewthroughconversion/1017883234/?frame=0&amp;random=1397685483676&amp;cv=7&amp;fst=1397685483676&amp;num=1&amp;fmt=1&amp;label=hbMzCI7rvAMQ4tSu5QM&amp;guid=ON&amp;u_h=900&amp;u_w=1440&amp;u_ah=874&amp;u_aw=1440&amp;u_cd=24&amp;u_his=7&amp;u_tz=-420&amp;u_java=true&amp;u_nplug=17&amp;u_nmime=59&amp;frm=0&amp;url=http%3A//blog.teamtreehouse.com/the-beginners-guide-to-three-js&amp;ref=https%3A//www.google.com/" /&gt;</iframe>
+<noscript>
+&lt;div style="display:inline;"&gt;
+&lt;img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1017883234/?value=0&amp;amp;label=hbMzCI7rvAMQ4tSu5QM&amp;amp;guid=ON&amp;amp;script=0"/&gt;
+&lt;/div&gt;
+</noscript>
+
+<script type="text/javascript" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/136759817.js"></script>
+<!-- This site is optimized with the Yoast WordPress SEO plugin v1.5.2.6 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="In this step-by-step guide, we&#39;re going to create a 3D version of the Treehouse logo using three.js, which is a 3D graphics framework built on top of WebGL.">
+<link rel="canonical" href="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog.html">
+<link rel="author" href="https://plus.google.com/100899864790226057662/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Beginner&#39;s Guide to three.js - Treehouse Blog">
+<meta property="og:description" content="In this step-by-step guide, we&#39;re going to create a 3D version of the Treehouse logo using three.js, which is a 3D graphics framework built on top of WebGL.">
+<meta property="og:url" content="http://blog.teamtreehouse.com/the-beginners-guide-to-three-js">
+<meta property="og:site_name" content="Treehouse Blog">
+<meta property="article:section" content="JavaScript">
+<meta property="article:section" content="Learn to Code">
+<meta property="article:published_time" content="2013-09-09T11:48:43+00:00">
+<meta property="og:image" content="http://blog.teamtreehouse.com/wp-content/uploads/2013/08/spdy-feature.jpg">
+<meta property="og:image" content="http://blog.teamtreehouse.com/wp-content/uploads/2013/09/treehouse_logo_3d.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@treehouse">
+<meta name="twitter:domain" content="Treehouse Blog">
+<meta name="twitter:creator" content="@nickrp">
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Treehouse Blog » Feed" href="http://blog.teamtreehouse.com/feed">
+<link rel="alternate" type="application/rss+xml" title="Treehouse Blog » Comments Feed" href="http://blog.teamtreehouse.com/comments/feed">
+
+            <script type="text/javascript">//<![CDATA[
+            // Google Analytics for WordPress by Yoast v4.3.5 | http://yoast.com/wordpress/google-analytics/
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA--256707760-10']);
+				            _gaq.push(['_setCustomVar',1,'author','nick-pettit',3],['_setCustomVar',3,'year','2013',3],['_setCustomVar',4,'categories','javascript-code learn-to-code',3],['_trackPageview']);
+            (function () {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+            //]]></script>
+			<link rel="alternate" type="application/rss+xml" title="Treehouse Blog » The Beginner’s Guide to three.js Comments Feed" href="http://blog.teamtreehouse.com/the-beginners-guide-to-three-js/feed">
+<link rel="stylesheet" id="digg-digg-css" href="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/diggdigg-style.css" type="text/css" media="screen">
+<link rel="stylesheet" id="wp-syntax-css-css" href="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/wp-syntax.css" type="text/css" media="all">
+<script type="text/javascript" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/jquery.js"></script>
+<script type="text/javascript" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/comment-reply.min.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.teamtreehouse.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blog.teamtreehouse.com/wp-includes/wlwmanifest.xml"> 
+<link rel="shortlink" href="http://blog.teamtreehouse.com/?p=22261">
+<!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("7b38bdec31b0d42dc60b2c77d946e5ad");</script><!-- end Mixpanel -->
+
+
+
+
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tab-index="-1" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/8n77RrR4jg0.html" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tab-index="-1" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/8n77RrR4jg0(1).html" style="border: none;"></iframe></div></div></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div id="page" class="hfeed">
+	<header id="branding" role="banner">
+
+  <div class="alert-bar" id="global-banner" style="display: block;">
+    <span>Start learning for free today! (14-day trial)</span>
+    <a href="https://teamtreehouse.com/subscribe/plans?trial=yes&?cid=1922&utm_content=free-trial-from-blog">Pick Your Plan</a>
+		<a class="ss-icon close">␡</a>
+	</div>
+
+		<div id="head-inner">
+
+			<a id="back-home" href="http://teamtreehouse.com/?cid=1000">←&nbsp;Back to Treehouse</a>
+
+			<div class="logo">
+			<h1 id="site-title"><a href="http://blog.teamtreehouse.com/" title="Treehouse Blog" rel="home"><img src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/logo-blog2x.png"></a></h1>
+			</div>
+
+			<div id="mini-nav">
+				<a class="ss-icon" href="http://blog.teamtreehouse.com/the-beginners-guide-to-three-js#"></a>
+			</div>
+
+			<div id="main-nav" class="inactive">
+				<ul>
+					<li class="websites"><a href="http://blog.teamtreehouse.com/category/make-a-website/">Websites</a></li>
+					<li class="coding"><a href="http://blog.teamtreehouse.com/category/learn-to-code/">Coding</a></li>
+					<li class="iOS"><a href="http://blog.teamtreehouse.com/category/make-an-iphone-app/">iOS</a></li>
+					<li class="android"><a href="http://blog.teamtreehouse.com/category/make-an-android-app/">Android</a></li>
+					<li class="business"><a href="http://blog.teamtreehouse.com/category/start-a-business/">Business</a></li>
+					<li class="membership"><a href="http://teamtreehouse.com/?cid=1000"><span class="ss-icon">👤</span>Membership</a></li>
+				</ul>
+			</div>
+
+			<div id="mini-search">
+				<a class="ss-icon" href="http://blog.teamtreehouse.com/the-beginners-guide-to-three-js#">🔎</a>
+			</div>
+
+							<div id="search-container" class="inactive">
+						<form method="get" id="searchform" action="http://blog.teamtreehouse.com/">
+		<label for="s" class="assistive-text">Search</label>
+		<input type="text" class="field" name="s" id="s" placeholder="Search">
+		<input type="submit" class="submit ss-icon" name="submit" id="searchsubmit" value="🔎">
+	</form>
+					<span class="search-button ss-search"></span>
+
+					<div class="signup-treehouse">
+						<a href="http://teamtreehouse.com/?cid=1000"><img src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/signup2x.png"></a>
+					</div>
+				</div>
+			
+			<div class="stripes">
+				<span class="stripe item1"></span>
+				<span class="stripe item2"></span>
+				<span class="stripe item3"></span>
+				<span class="stripe item4"></span>
+				<span class="stripe item5"></span>
+				<span class="stripe item6"></span>
+				<span class="stripe item7"></span>
+				<span class="stripe item8"></span>
+				<span class="stripe item9"></span>
+				<span class="stripe item10"></span>
+				<span class="stripe item11"></span>
+				<span class="stripe item12"></span>
+				<span class="stripe item13"></span>
+				<span class="stripe item14"></span>
+				<span class="stripe item15"></span>
+				<span class="stripe item16"></span>
+				<span class="stripe item17"></span>
+				<span class="stripe item18"></span>
+				<span class="stripe item19"></span>
+				<span class="stripe item20"></span>
+				<span class="stripe item21"></span>
+				<span class="stripe item22"></span>
+				<span class="stripe item23"></span>
+				<span class="stripe item24"></span>
+				<span class="stripe item25"></span>
+				<span class="stripe item26"></span>
+				<span class="stripe item27"></span>
+				<span class="stripe item28"></span>
+				<span class="stripe item29"></span>
+				<span class="stripe item30"></span>
+				<span class="stripe item31"></span>
+				<span class="stripe item32"></span>
+				<span class="stripe item33"></span>
+				<span class="stripe item34"></span>
+				<span class="stripe item35"></span>
+				<span class="stripe item36"></span>
+				<span class="stripe item37"></span>
+				<span class="stripe item38"></span>
+				<span class="stripe item39"></span>
+				<span class="stripe item40"></span>
+				<span class="stripe item41"></span>
+				<span class="stripe item42"></span>
+				<span class="stripe item43"></span>
+				<span class="stripe item44"></span>
+				<span class="stripe item45"></span>
+				<span class="stripe item46"></span>
+				<span class="stripe item47"></span>
+				<span class="stripe item48"></span>
+				<span class="stripe item49"></span>
+				<span class="stripe item50"></span>
+			</div>
+			<div id="social">
+				<a class="ss-icon ss-social facebook" href="http://www.facebook.com/TeamTreehouse" target="blank"><span>Facebook</span></a>
+				<a class="ss-icon ss-social twitter" href="http://twitter.com/treehouse" target="blank"><span>Twitter</span></a>
+				<a class="ss-icon ss-social google" href="https://plus.google.com/110278003536476194286/posts" target="blank"><span>Google Plus</span></a>
+				<a class="ss-icon ss-social youtube" href="http://www.youtube.com/user/gotreehouse" target="blank"><span>YouTube</span></a>
+				<a class="ss-icon rss" href="http://feeds.feedburner.com/teamtreehouse" target="blank"><span>RSS</span></a>
+			</div>
+		</div>
+
+	</header><!-- #branding -->
+
+	<div id="main">
+
+		<div id="primary">
+		<div class="inner">		
+			<div id="content" role="main">
+
+				
+					<nav id="nav-single">
+						<h3 class="assistive-text">Post navigation</h3>
+						<span class="nav-previous"><a href="http://blog.teamtreehouse.com/what-learning-to-program-has-done-for-me" rel="prev">← Previous</a></span>
+						<span class="nav-next"><a href="http://blog.teamtreehouse.com/coding-a-dynamic-imdb-webapp-using-my-movie-api" rel="next">Next →</a></span>
+					</nav><!-- #nav-single -->
+
+					
+<article id="post-22261" class="post-22261 post type-post status-publish format-standard hentry category-javascript-code category-learn-to-code">
+	<header class="entry-header">
+		<h1 class="entry-title">The Beginner’s Guide to three.js</h1>
+
+				<div class="entry-meta">
+			<span class="sep"></span><a href="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog.html" title="11:48 am" rel="bookmark"><time class="entry-date" datetime="2013-09-09T11:48:43+00:00" pubdate="">September 9, 2013</time></a><span class="by-author"> </span>		</div><!-- .entry-meta -->
+		
+		<div class="single-entry-meta">
+		<a class="author" href="http://blog.teamtreehouse.com/author/nickpettit">Nick Pettit</a><span class="bullet">●</span><span class="category"><a href="http://blog.teamtreehouse.com/category/code/javascript-code" title="View all posts in JavaScript" rel="category tag">JavaScript</a>, <a href="http://blog.teamtreehouse.com/category/learn-to-code" title="View all posts in Learn to Code" rel="category tag">Learn to Code</a></span>
+		<span class="bullet ss-record"></span><a href="http://blog.teamtreehouse.com/the-beginners-guide-to-three-js#comments">11 Comments</a>
+		
+		</div>
+
+	</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<img width="1000" height="288" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/spdy-feature.jpg" class="attachment- wp-post-image" alt="Making The Web Faster With SPDY"> 
+		<a id="dd_start"></a><p>In this step-by-step guide, we’re going to create a 3D version of the Treehouse logo using three.js, which is a 3D graphics framework built on top of WebGL.&nbsp;Click and drag your mouse to orbit the camera! You can also use your mousewheel to zoom in and out.</p>
+<p><a class="button orange" href="http://treehouse-code-samples.s3.amazonaws.com/threejs_logo_example/index.html" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://treehouse-code-samples.s3.amazonaws.com&#39;]);">See the Demo</a>&nbsp;&nbsp;&nbsp;<a class="button" href="http://treehouse-code-samples.s3.amazonaws.com/threejs_logo_example/threejs_logo_example.zip" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;download&#39;,&#39;http://treehouse-code-samples.s3.amazonaws.com/threejs_logo_example/threejs_logo_example.zip&#39;]);">Download the Code</a>&nbsp;&nbsp;&nbsp;<a class="button" href="http://codepen.io/nickpettit/pen/HlCem" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://codepen.io&#39;]);">View on CodePen</a></p>
+<p><em>Note: You’ll need the desktop version of either Chrome, Firefox, or Safari. See <a href="http://blog.teamtreehouse.com/the-beginners-guide-to-three-js#BrowserCompatibility">browser compatibility</a> below.</em></p>
+<p><a style="font-style: normal; line-height: 24px; text-decoration: underline;" href="http://treehouse-code-samples.s3.amazonaws.com/threejs_logo_example/index.html" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://treehouse-code-samples.s3.amazonaws.com&#39;]);"><img class=" wp-image-22262" style="border-color: #bbbbbb; background-color: #eeeeee;" alt="The Treehouse logo rendered using three.js" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/treehouse_logo_3d.png" width="1520" height="720"></a><br>
+3D graphics can be difficult, especially&nbsp;<a href="http://blog.teamtreehouse.com/3d-in-the-browser-webgl-versus-css-3d-transforms">3D in the browser</a>. Frameworks like&nbsp;<a href="http://threejs.org/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://threejs.org&#39;]);">three.js</a>&nbsp;make it a bit easier, but the official documentation is still under construction and there are a few quirks that can stop beginners from ever getting started.&nbsp;If you’re new to 3D, this guide will help you get started.</p>
+<p>Even though three.js might look complex at first, it would actually take even <em>more</em> code to write the same thing in pure WebGL, mostly because we’d need to write a rendering engine. All the heavy lifting is done with three.js without sacrificing much flexibility.</p>
+<h2 id="BrowserCompatibility">Browser Compatibility</h2>
+<p>For this tutorial, you’ll need the desktop version of either Chrome, Firefox, or Safari. Unfortunately, WebGL doesn’t work on mobile browsers yet, and it won’t be available in Internet Explorer until version 11.</p>
+<p>Also, if you’re using Safari, you need to enable WebGL first. Here’s how to enable WebGL in Safari:<em><br>
+</em></p>
+<ol>
+<li>Open the <strong>Preferences</strong> menu.</li>
+<li>Click on the <strong>Advanced</strong> tab.</li>
+<li>Click the checkbox that says <strong>Show Develop menu in menu bar</strong>.</li>
+<li>Open the <strong>Develop</strong> menu from the menu bar and select&nbsp;<strong>Enable WebGL</strong>.</li>
+</ol>
+<p>Here’s the <a href="http://caniuse.com/#search=webgl" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://caniuse.com&#39;]);">caniuse.com matrix for WebGL compatibility</a>. Hopefully support will pick up in the future, because this is a really cool technology!</p>
+<h2>Getting Started</h2>
+<h3>Download three.js</h3>
+<p>Head over to&nbsp;<a href="http://threejs.org/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://threejs.org&#39;]);">http://threejs.org/</a> and click the “Download” link on the left side of your screen. Once the zip has finished downloading, open it up and go to the <strong>build</strong> folder. Inside, you’ll find a file called <strong>three.min.js</strong>&nbsp;and, if you’re following along, you should copy this file into your local development directory.</p>
+<p>For this tutorial, you’ll also need a file called <strong>OrbitControls.js</strong> which is included in the three.js download. Here’s the file path:</p>
+<p><code> threejs folder &gt; <strong>examples</strong> &gt; <strong>js</strong> &gt; <strong>controls</strong> &gt; <strong>OrbitControls.js </strong></code></p>
+<p>If you’d rather just grab the two files you need, they’re included with <a href="http://treehouse-code-samples.s3.amazonaws.com/threejs_logo_example/threejs_logo_example.zip" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;download&#39;,&#39;http://treehouse-code-samples.s3.amazonaws.com/threejs_logo_example/threejs_logo_example.zip&#39;]);">the example code</a> for this tutorial.</p>
+<h3>setup the local environment</h3>
+<p>JavaScript has a security feature called the <a href="http://en.wikipedia.org/wiki/Same-origin_policy" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://en.wikipedia.org&#39;]);">same-origin policy</a>, which means you cannot load externally hosted files inside of your JavaScript code. This can be slightly problematic, because three.js needs to load geometry, textures, and other files. In order to circumvent this issue, you’ll need a local http server so that your files come from the same origin. Simply opening the index.html file directly in the browser isn’t going to work.</p>
+<p>Fortunately, there’s a <a href="https://github.com/mrdoob/three.js/wiki" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://github.com&#39;]);">three.js FAQ</a> with an excellent guide on<a href="https://github.com/mrdoob/three.js/wiki/How-to-run-things-locally" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://github.com&#39;]);"> how to run three.js locally</a> using either Python, Ruby, or adjusting your browser settings. It’s easier than it sounds, so if you’re scratching your head wondering why some files aren’t loading, check out the guide.</p>
+<h3>CreatE 3D Assets</h3>
+<p>I’ve already created a 3D version of the Treehouse logo that you’re welcome to use for learning purposes (you can find the mesh inside the <a href="http://treehouse-code-samples.s3.amazonaws.com/threejs_logo_example/threejs_logo_example.zip" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;download&#39;,&#39;http://treehouse-code-samples.s3.amazonaws.com/threejs_logo_example/threejs_logo_example.zip&#39;]);">code download</a>), but if you’d like to create your own meshes, I recommend you use <a href="http://www.blender.org/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://www.blender.org&#39;]);">Blender</a>. It’s a wonderful 3D modeling and rendering package that’s free, open source, and cross-platform. There’s also plenty of educational material out there (free and paid) to help you get started modeling. I used Blender for the first time and had my finished mesh in about an hour. There’s probably some optimizations I could have made (the mesh topology is actually a bit messy) but it works for this demo.</p>
+<p>In order to export a mesh from Blender for use in three.js, you’ll need to open the utility folder in three.js and install the exporter. Here are instructions on <a href="https://github.com/mrdoob/three.js/tree/master/utils/exporters/blender" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://github.com&#39;]);">how to export from Blender to three.js</a>.</p>
+<h2>The HTML</h2>
+<p>Alright. Once you’ve got your files in place and your local environment setup, it’s time to start coding. Let’s get the HTML out of the way first, because that’s the easy part. You just need a basic template like this to get going. This also assumes your JavaScript is stored in a folder called <code>js</code>, so check your file paths just in case.</p>
+<h3>index.html</h3>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="html" style="font-family:monospace;">&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;title&gt;Treehouse Logo in three.js&lt;/title&gt;
+  &lt;meta charset="utf-8"&gt;
+&lt;/head&gt;
+&lt;body style="margin: 0;"&gt;
+&nbsp;
+  &lt;script src="js/three.min.js"&gt;&lt;/script&gt;
+  &lt;script src="js/OrbitControls.js"&gt;&lt;/script&gt;
+&nbsp;
+  &lt;script&gt;
+&nbsp;
+    // Our 3D code will go here...
+&nbsp;
+  &lt;/script&gt;
+&nbsp;
+&lt;/body&gt;
+&lt;/html&gt;</pre></td></tr></tbody></table></div>
+
+<p>Like I said, nothing special here. The magic happens between the script tags.</p>
+<h2>Using three.js to Create 3D Scenes</h2>
+<p>We could write our JavaScript externally, but since there aren’t any HTML elements inside of the body, I figured it would help make this example a bit more clear if inline script tags were used.</p>
+<h3>Global variables and functions</h3>
+<p>Inside our script tags, we want to set up some global variables and then call some functions, all of which will be defined later on:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="javascript" style="font-family:monospace;">  <span style="color: #006600; font-style: italic;">// Set up the scene, camera, and renderer as global variables.</span>
+  <span style="color: #000066; font-weight: bold;">var</span> scene<span style="color: #339933;">,</span> camera<span style="color: #339933;">,</span> renderer<span style="color: #339933;">;</span>
+&nbsp;
+  init<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+  animate<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span></pre></td></tr></tbody></table></div>
+
+<h3>Create the Scene</h3>
+<p>Three.js uses the concept of a <em>scene</em> to define an area where you can place things like geometry, lights, cameras, and so on. In the following code, we start writing our initialization function by creating a scene. Then, we store the width and height of the browser window in the variables <code>WIDTH</code> and <code>HEIGHT</code>. We’ll need them in more than once place later on, so it’s good to just grab them once and store them.</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="javascript" style="font-family:monospace;">  <span style="color: #006600; font-style: italic;">// Globals from the previous step go here...</span>
+&nbsp;
+  <span style="color: #006600; font-style: italic;">// Sets up the scene.</span>
+  <span style="color: #000066; font-weight: bold;">function</span> init<span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// Create the scene and set the scene size.</span>
+    scene <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> THREE.<span style="color: #660066;">Scene</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    <span style="color: #000066; font-weight: bold;">var</span> WIDTH <span style="color: #339933;">=</span> window.<span style="color: #660066;">innerWidth</span><span style="color: #339933;">,</span>
+        HEIGHT <span style="color: #339933;">=</span> window.<span style="color: #660066;">innerHeight</span><span style="color: #339933;">;</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// More code goes here next...</span>
+&nbsp;
+  <span style="color: #009900;">}</span></pre></td></tr></tbody></table></div>
+
+<h3>Create the Renderer</h3>
+<p>Next, we set up a three.js renderer. We could use the SVG or canvas renderers, but we want to use the <a href="http://threejs.org/docs/#Reference/Renderers/WebGLRenderer" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://threejs.org&#39;]);">WebGL renderer</a> because it’s able to take advantage of the GPU, which makes it several orders of magnitude more performant. After creating the renderer, we append it to the DOM via the body element. This will make three.js create a <code>canvas</code> inside the body element that will be used to render our scene.</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="javascript" style="font-family:monospace;">  <span style="color: #006600; font-style: italic;">// Sets up the scene.</span>
+  <span style="color: #000066; font-weight: bold;">function</span> init<span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// Code from previous steps goes here...</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// Create a renderer and add it to the DOM.</span>
+    renderer <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> THREE.<span style="color: #660066;">WebGLRenderer</span><span style="color: #009900;">(</span><span style="color: #009900;">{</span>antialias<span style="color: #339933;">:</span><span style="color: #003366; font-weight: bold;">true</span><span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    renderer.<span style="color: #660066;">setSize</span><span style="color: #009900;">(</span>WIDTH<span style="color: #339933;">,</span> HEIGHT<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    document.<span style="color: #660066;">body</span>.<span style="color: #660066;">appendChild</span><span style="color: #009900;">(</span>renderer.<span style="color: #660066;">domElement</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// More code goes here next...</span>
+&nbsp;
+  <span style="color: #009900;">}</span></pre></td></tr></tbody></table></div>
+
+<h3>Create a Camera</h3>
+<p>Once our scene and renderer are in place, we can create a camera. The <code><a href="http://threejs.org/docs/#Reference/Cameras/PerspectiveCamera" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://threejs.org&#39;]);">PerspectiveCamera</a></code> takes a few parameters. They are:</p>
+<ul>
+<li>FOV – We’re using 45 degrees for our field of view.</li>
+<li>Apsect – We’re simply dividing the browser width and height to get an aspect ratio.</li>
+<li>Near – This is the distance at which the camera will start rendering scene objects.</li>
+<li>Far – Anything beyond this distance will not be rendered. Perhaps more commonly known as the <em>draw distance</em>.</li>
+</ul>
+<p>After our camera is created, we set the position by using some simply XYZ coordinates. The default is <code>0,0,0</code> but I’ve set the Y value to 6 just to get some distance between our view and the mesh.</p>
+<p>Finally, we need to add the camera to the scene.</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="javascript" style="font-family:monospace;">  <span style="color: #006600; font-style: italic;">// Sets up the scene.</span>
+  <span style="color: #000066; font-weight: bold;">function</span> init<span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// Code from previous steps goes here...</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// Create a camera, zoom it out from the model a bit, and add it to the scene.</span>
+    camera <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> THREE.<span style="color: #660066;">PerspectiveCamera</span><span style="color: #009900;">(</span><span style="color: #CC0000;">45</span><span style="color: #339933;">,</span> WIDTH <span style="color: #339933;">/</span> HEIGHT<span style="color: #339933;">,</span> <span style="color: #CC0000;">0.1</span><span style="color: #339933;">,</span> <span style="color: #CC0000;">20000</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    camera.<span style="color: #660066;">position</span>.<span style="color: #000066; font-weight: bold;">set</span><span style="color: #009900;">(</span><span style="color: #CC0000;">0</span><span style="color: #339933;">,</span><span style="color: #CC0000;">6</span><span style="color: #339933;">,</span><span style="color: #CC0000;">0</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    scene.<span style="color: #660066;">add</span><span style="color: #009900;">(</span>camera<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// More code goes here next...</span>
+&nbsp;
+  <span style="color: #009900;">}</span></pre></td></tr></tbody></table></div>
+
+<h3>Update the Viewport on Resize</h3>
+<p>This is all well and good, but what happens when the site visitor resizes the browser window? For that, we’ll need to add an event listener. When the browser is resized, a couple of things happen. First, we resample the new width and height of the browser and store it in a variable that’s scoped to the function. Then, we use those values to set the new size of our renderer as well as recalculate the aspect ratio of the camera. In addition, we need to call <code>updateProjectionMatrix()</code> on the camera object so that our scene will actually update with the new parameters. This is computationally expensive in the context of real-time 3D rendering, but once the browser is resized, things click back to their normal frame rates.</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="javascript" style="font-family:monospace;">  <span style="color: #006600; font-style: italic;">// Sets up the scene.</span>
+  <span style="color: #000066; font-weight: bold;">function</span> init<span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// Code from previous steps goes here...</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// Create an event listener that resizes the renderer with the browser window.</span>
+    window.<span style="color: #660066;">addEventListener</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'resize'</span><span style="color: #339933;">,</span> <span style="color: #000066; font-weight: bold;">function</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span>
+      <span style="color: #000066; font-weight: bold;">var</span> WIDTH <span style="color: #339933;">=</span> window.<span style="color: #660066;">innerWidth</span><span style="color: #339933;">,</span>
+          HEIGHT <span style="color: #339933;">=</span> window.<span style="color: #660066;">innerHeight</span><span style="color: #339933;">;</span>
+      renderer.<span style="color: #660066;">setSize</span><span style="color: #009900;">(</span>WIDTH<span style="color: #339933;">,</span> HEIGHT<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+      camera.<span style="color: #660066;">aspect</span> <span style="color: #339933;">=</span> WIDTH <span style="color: #339933;">/</span> HEIGHT<span style="color: #339933;">;</span>
+      camera.<span style="color: #660066;">updateProjectionMatrix</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// More code goes here next...</span>
+&nbsp;
+  <span style="color: #009900;">}</span></pre></td></tr></tbody></table></div>
+
+<h3>Add Lighting</h3>
+<p>Now it’s time to start crafting our scene a bit. By calling the <code>setClearColorHex</code> function on our <code><a href="http://threejs.org/docs/#Reference/Renderers/WebGLRenderer" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://threejs.org&#39;]);">WebGLRenderer</a></code> object, we’re able to set the background color of our scene to the Treehouse grey hex color with an opacity of 1.</p>
+<p>Next, we’ll need a light in order to see our 3D objects, so we’ll add a <code><a href="http://threejs.org/docs/#Reference/Lights/PointLight" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://threejs.org&#39;]);">PointLight</a></code> to the scene and set its position. There are several other kinds of lights you can add to a scene, so be sure to check out the linked documentation.</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="javascript" style="font-family:monospace;">  <span style="color: #006600; font-style: italic;">// Sets up the scene.</span>
+  <span style="color: #000066; font-weight: bold;">function</span> init<span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// Code from previous steps goes here...</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// Set the background color of the scene.</span>
+    renderer.<span style="color: #660066;">setClearColorHex</span><span style="color: #009900;">(</span>0x333F47<span style="color: #339933;">,</span> <span style="color: #CC0000;">1</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// Create a light, set its position, and add it to the scene.</span>
+    <span style="color: #000066; font-weight: bold;">var</span> light <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> THREE.<span style="color: #660066;">PointLight</span><span style="color: #009900;">(</span>0xffffff<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    light.<span style="color: #660066;">position</span>.<span style="color: #000066; font-weight: bold;">set</span><span style="color: #009900;">(</span><span style="color: #339933;">-</span><span style="color: #CC0000;">100</span><span style="color: #339933;">,</span><span style="color: #CC0000;">200</span><span style="color: #339933;">,</span><span style="color: #CC0000;">100</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    scene.<span style="color: #660066;">add</span><span style="color: #009900;">(</span>light<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// More code goes here next...</span>
+&nbsp;
+  <span style="color: #009900;">}</span></pre></td></tr></tbody></table></div>
+
+<h3>Load Geometry</h3>
+<p>Our mesh has been exported from Blender using the three.js JSON exporter, so we need to use the <code><a href="http://threejs.org/docs/#Reference/Loaders/JSONLoader" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://threejs.org&#39;]);">JSONLoader</a></code> to get the geometry into the scene. A callback is used inside the loader to set the material on the mesh. In this case, we’re using a basic <code><a href="http://threejs.org/docs/#Reference/Materials/MeshLambertMaterial" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://threejs.org&#39;]);">LambertMaterial</a></code> to set the mesh to Treehouse’s green color. For completeness, I should note here that the green you’re seeing in the final render isn’t quite the same as Treehouse’s logo green. That’s because the point light is skewing the brightness slightly, but we won’t worry about it for this demo.</p>
+<p>Before leaving the callback function, we create a new mesh with our geometry and the material as parameters, then we add the mesh to the scene.</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="javascript" style="font-family:monospace;">  <span style="color: #006600; font-style: italic;">// Sets up the scene.</span>
+  <span style="color: #000066; font-weight: bold;">function</span> init<span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// Code from previous steps goes here...</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// Load in the mesh and add it to the scene.</span>
+    <span style="color: #000066; font-weight: bold;">var</span> loader <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> THREE.<span style="color: #660066;">JSONLoader</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    loader.<span style="color: #660066;">load</span><span style="color: #009900;">(</span> <span style="color: #3366CC;">"models/treehouse_logo.js"</span><span style="color: #339933;">,</span> <span style="color: #000066; font-weight: bold;">function</span><span style="color: #009900;">(</span>geometry<span style="color: #009900;">)</span><span style="color: #009900;">{</span>
+      <span style="color: #000066; font-weight: bold;">var</span> material <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> THREE.<span style="color: #660066;">MeshLambertMaterial</span><span style="color: #009900;">(</span><span style="color: #009900;">{</span>color<span style="color: #339933;">:</span> 0x55B663<span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+      mesh <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> THREE.<span style="color: #660066;">Mesh</span><span style="color: #009900;">(</span>geometry<span style="color: #339933;">,</span> material<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+      scene.<span style="color: #660066;">add</span><span style="color: #009900;">(</span>mesh<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// More code goes here next...</span>
+&nbsp;
+  <span style="color: #009900;">}</span></pre></td></tr></tbody></table></div>
+
+<h3>Add Controls</h3>
+<p>The last thing in our initialization function is the orbit controls we included earlier. These aren’t totally necessary, but they do allow us to drag the mouse across the mesh and orbit around it. It also allows the mousewheel to be used to zoom in and out of the mesh.</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="javascript" style="font-family:monospace;">  <span style="color: #006600; font-style: italic;">// Sets up the scene.</span>
+  <span style="color: #000066; font-weight: bold;">function</span> init<span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// Code from previous steps goes here...</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// Add OrbitControls so that we can pan around with the mouse.</span>
+    controls <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> THREE.<span style="color: #660066;">OrbitControls</span><span style="color: #009900;">(</span>camera<span style="color: #339933;">,</span> renderer.<span style="color: #660066;">domElement</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+&nbsp;
+  <span style="color: #009900;">}</span>
+&nbsp;
+  <span style="color: #006600; font-style: italic;">// More code goes here next...</span></pre></td></tr></tbody></table></div>
+
+<h3>Render the Scene</h3>
+<p>After our initialization function, we need to finish up with our animation function. It may not seem like anything is really “animated” here in the traditional sense, but we do need to redraw when the camera orbits around the mesh.</p>
+<p>The <code>requestAnimationFrame()</code> function uses a newer browser API that delegates redraws to the browser. This has some pretty cool benefits, but primarily it makes sure the browser isn’t drawing your animation unnecessarily if that tab isn’t currently selected. <a href="http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://www.paulirish.com&#39;]);">Paul Irish wrote an excellent blog post on requestAnimationFrame</a> that explains this in more detail.</p>
+<p>After that, we need to render our scene through the camera we added earlier and then update the orbit controls.</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="javascript" style="font-family:monospace;">  <span style="color: #006600; font-style: italic;">// Sets up the scene.</span>
+  <span style="color: #000066; font-weight: bold;">function</span> init<span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span>
+    <span style="color: #006600; font-style: italic;">// Code from previous steps goes here...</span>
+  <span style="color: #009900;">}</span>
+&nbsp;
+  <span style="color: #006600; font-style: italic;">// Renders the scene and updates the render as needed.</span>
+  <span style="color: #000066; font-weight: bold;">function</span> animate<span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// Read more about requestAnimationFrame at http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/</span>
+    requestAnimationFrame<span style="color: #009900;">(</span>animate<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+&nbsp;
+    <span style="color: #006600; font-style: italic;">// Render the scene.</span>
+    renderer.<span style="color: #660066;">render</span><span style="color: #009900;">(</span>scene<span style="color: #339933;">,</span> camera<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    controls.<span style="color: #660066;">update</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+&nbsp;
+  <span style="color: #009900;">}</span></pre></td></tr></tbody></table></div>
+
+<p>To see what the final result looks like, be sure to download the code. Try changing some of the parameters around and see what happens!</p>
+<h2>What’s Next?</h2>
+<p>I think three.js is an amazing project that unlocks the power of WebGL for people that aren’t 3D graphics gurus (like me). Browser support is still picking up, but I feel like some of the&nbsp;most practical applications of WebGL sit with product demos: Imagine exploring a new car in full 3D from the comfort of your browser.</p>
+<p>However, such a low the barrier to entry makes it possible to create&nbsp;<a href="http://acko.net/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://acko.net&#39;]);">cool logos</a> or make <a href="http://lights.elliegoulding.com/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-article&#39;,&#39;http://lights.elliegoulding.com&#39;]);">music videos</a> without spending years writing renderers or other complex code. If you’re a little more dedicated, you could even make games and build worlds. It makes the browser a much more experiential place, which I think is pretty awesome. Who wants to make documents? I want to make <em>places</em>.</p>
+<a id="dd_end"></a><script type="text/javascript">var dd_offset_from_content = 40;var dd_top_offset_from_content = 0;var dd_override_start_anchor_id = "";var dd_override_top_offset = "";</script><script type="text/javascript" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/diggdigg-floating-bar.js"></script><script type="text/javascript">
+mixpanel.track('Viewed Blog Post', {
+    "Title":"The Beginner&#8217;s Guide to three.js",
+});
+</script>			</div><!-- .entry-content -->
+
+	<a href="http://teamtreehouse.com/join/start-learning-free?utm_source=article-cta&utm_medium=blog&utm_campaign=treehouse-blog&cid=1000">
+		</a><div class="start-learning-cta"><a href="http://teamtreehouse.com/join/start-learning-free?utm_source=article-cta&utm_medium=blog&utm_campaign=treehouse-blog&cid=1000">
+			<p>Start Learning <strong>Web Design</strong>, <strong>Coding</strong>, <strong>How To Start A Business</strong> &amp; More for Free!</p><span class="diamond-narrow"></span>
+			</a><a href="http://teamtreehouse.com/join/start-learning-free?utm_source=article-cta&utm_medium=blog&utm_campaign=treehouse-blog&cid=1000" class="button orange">Learn More</a>
+		</div>
+	
+
+	<footer class="entry-meta">
+		
+				
+		<div id="author-description">
+			<div id="author-avatar">
+				<img alt="" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/2cc39856b77d968cf12ca83a4e26d58c" class="avatar avatar-140 photo" height="140" width="140">			</div><!-- #author-avatar -->
+			<h2>Nick Pettit</h2>
+			<p>Nick is a designer, public speaker, and teacher at Treehouse. He is also a co-host of <a href="http://teamtreehouse.com/library/the-treehouse-show">The Treehouse Show</a>.
+
+Twitter: <a href="http://twitter.com/nickrp">@nickrp</a></p>
+		</div><!-- #author-description	-->
+
+			</footer><!-- .entry-meta -->
+</article><!-- #post-22261 -->
+
+					<div id="comments">	
+						<h2>Comments</h2>
+							<div id="comments">
+	
+	
+			<h2 id="comments-title">
+			11 comments on “<span>The Beginner’s Guide to three.js</span>”		</h2>
+
+		
+		<ol class="commentlist">
+				<li class="comment even thread-even depth-1" id="li-comment-25957">
+		<article id="comment-25957" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/c5c2bf91367bd7a36cd7a936e137eab4" class="avatar avatar-68 photo" height="68" width="68"><span class="fn"><a href="http://css-swag.com/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://css-swag.com&#39;]);" rel="external nofollow" class="url">Jordan Foreman</a></span> on <a href="http://blog.teamtreehouse.com/the-beginners-guide-to-three-js#comment-25957"><time pubdate="" datetime="2013-09-09T13:16:00+00:00">September 9, 2013 at 1:16 pm</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>I’ll have to work through this sometime; I’ve been meaning to check out three.js for awhile. I was actually tinkering around with Babylon.js a bit this weekend, which is another 3D framework for WebGL. Have you or anyone else worked with both? Three.js seems like the obvious leader in WebGL frameworks, but I’d love to hear what other people think about it vs. similar frameworks.</p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment odd alt depth-2" id="li-comment-25958">
+		<article id="comment-25958" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/3ac3c66144bb3f7330af9fb6ab64d8a2" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://nickpettit.com/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://nickpettit.com&#39;]);" rel="external nofollow" class="url">Nick Pettit</a></span> on <a href="http://blog.teamtreehouse.com/the-beginners-guide-to-three-js#comment-25958"><time pubdate="" datetime="2013-09-09T13:27:00+00:00">September 9, 2013 at 1:27 pm</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>I haven’t tried Babylon.js, although it looks like there’s no documentation for it. Just examples. <img src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/icon_razz.gif" alt=":P" class="wp-smiley">  Am I missing something?</p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment even depth-3" id="li-comment-25959">
+		<article id="comment-25959" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/c5c2bf91367bd7a36cd7a936e137eab4(1)" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://css-swag.com/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://css-swag.com&#39;]);" rel="external nofollow" class="url">Jordan Foreman</a></span> on <a href="http://blog.teamtreehouse.com/the-beginners-guide-to-three-js#comment-25959"><time pubdate="" datetime="2013-09-09T13:42:00+00:00">September 9, 2013 at 1:42 pm</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>No, you’re definitely right, documentation is lacking for babylon atm. There are some entry level tutorials if you dig into the repo’s wiki, but it’s nowhere near as supported as three.js.</p>
+<p> I was curious as to what people thought of other frameworks, but that’s the only one I’ve played with. I like playing with the less popular libraries, and three.js seems kinda mainstream :p</p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-25960">
+		<article id="comment-25960" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/f3ada405ce890b6f8204094deb12d8a8" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">GregT</span> on <a href="http://blog.teamtreehouse.com/the-beginners-guide-to-three-js#comment-25960"><time pubdate="" datetime="2013-09-09T15:58:00+00:00">September 9, 2013 at 3:58 pm</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>FYI, Udacity has a 3D graphics course that is ALL about three.js. Starts of trivially easy, gets pretty interesting, then WHAM I have been stuck on Lesson 5 (matrix math) for a while now.</p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment even depth-2" id="li-comment-25963">
+		<article id="comment-25963" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/3ac3c66144bb3f7330af9fb6ab64d8a2" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://nickpettit.com/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://nickpettit.com&#39;]);" rel="external nofollow" class="url">Nick Pettit</a></span> on <a href="http://blog.teamtreehouse.com/the-beginners-guide-to-three-js#comment-25963"><time pubdate="" datetime="2013-09-09T16:17:00+00:00">September 9, 2013 at 4:17 pm</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Huh, sounds like Treehouse should probably make a better course. If only someone would tell them to get on it. <img src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/icon_wink.gif" alt=";)" class="wp-smiley"> </p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-even depth-1" id="li-comment-25964">
+		<article id="comment-25964" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/9a54118cfca8e7a562328d326f16def7" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">leonardo valnecia</span> on <a href="http://blog.teamtreehouse.com/the-beginners-guide-to-three-js#comment-25964"><time pubdate="" datetime="2013-09-09T20:41:00+00:00">September 9, 2013 at 8:41 pm</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>as designed the logo in 3d the file <a href="http://codepen.io/nickpettit/pen/nqyaK.js" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;download&#39;,&#39;http://codepen.io/nickpettit/pen/nqyaK.js&#39;]);" rel="nofollow">http://codepen.io/nickpettit/pen/nqyaK.js</a></p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment even depth-2" id="li-comment-25966">
+		<article id="comment-25966" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/3ac3c66144bb3f7330af9fb6ab64d8a2" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://nickpettit.com/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://nickpettit.com&#39;]);" rel="external nofollow" class="url">Nick Pettit</a></span> on <a href="http://blog.teamtreehouse.com/the-beginners-guide-to-three-js#comment-25966"><time pubdate="" datetime="2013-09-10T10:39:00+00:00">September 10, 2013 at 10:39 am</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Yep! I figured out on CodePen that you can store JSON data in another pen and then link it to an existing pen where you have your three.js scene loaded.</p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-25968">
+		<article id="comment-25968" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/d96f3b4daa572b8080d5ebf10a2f7abc" class="avatar avatar-68 photo" height="68" width="68"><span class="fn"><a href="http://www.3dimentional.net/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-commentauthor&#39;,&#39;http://www.3dimentional.net&#39;]);" rel="external nofollow" class="url">César Mujica Castro</a></span> on <a href="http://blog.teamtreehouse.com/the-beginners-guide-to-three-js#comment-25968"><time pubdate="" datetime="2013-09-10T16:52:00+00:00">September 10, 2013 at 4:52 pm</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>This definetely must be a course in treehouse.</p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-25980">
+		<article id="comment-25980" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/7ce9912ceb2c4c4673394e98ce1df65e" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Hjoaco Mg</span> on <a href="http://blog.teamtreehouse.com/the-beginners-guide-to-three-js#comment-25980"><time pubdate="" datetime="2013-09-12T13:05:00+00:00">September 12, 2013 at 1:05 pm</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>see demo page error, chrome 29 linux mint 13 xfce, fix please:<br>
+TypeError: Cannot call method ‘getExtension’ of null [http://treehouse-code-samples.s3.amazonaws.com/threejs_logo_example/js/three.min.js:421]</p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-25982">
+		<article id="comment-25982" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/c9cda8dfde4f4543920280b518d242dd" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">mendel keller</span> on <a href="http://blog.teamtreehouse.com/the-beginners-guide-to-three-js#comment-25982"><time pubdate="" datetime="2013-09-12T19:16:00+00:00">September 12, 2013 at 7:16 pm</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>this can do with a whole bunch of improvement, but its pretty good, gonna figure out if i can use this for my page.</p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-26002">
+		<article id="comment-26002" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/39b5eeb331bd351f78609e763e1a6da6" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Satguru</span> on <a href="http://blog.teamtreehouse.com/the-beginners-guide-to-three-js#comment-26002"><time pubdate="" datetime="2013-09-16T00:24:00+00:00">September 16, 2013 at 12:24 am</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Three.js is great but writing whole games and worlds in three.js can become tedious.<br>
+There are other webgl/javascript frameworks more suitable for this.<br>
+The one I find the most interesting and promising is <a href="http://www.cloudparty.com/" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-comment&#39;,&#39;http://www.cloudparty.com&#39;]);" rel="nofollow">http://www.cloudparty.com</a>.<br>
+The amount of works these guys have done is amazing – mesh, material, lightning,sound, animation, inworld creation tools, networking, scripting – you name it they have it.<br>
+All in webgl and javascript.<br>
+I just finsihed writing this simple 3d pacman game there <a href="https://www.cloudparty.com/loc/2977392759/-41.4,1,11.1,-1.7" onclick="javascript:_gaq.push([&#39;_trackEvent&#39;,&#39;outbound-comment&#39;,&#39;http://www.cloudparty.com&#39;]);" rel="nofollow">https://www.cloudparty.com/loc/2977392759/-41.4,1,11.1,-1.7</a> :))</p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+		</ol>
+
+		
+	
+			
+</div><!-- #comments -->
+					</div>
+
+				
+			</div><!-- #content -->
+		</div><!-- #inner -->
+		</div><!-- #primary -->
+
+		<div id="secondary" class="widget-area" role="complementary">
+							<div id="sticky">
+								<div class="newsletter">
+					<!-- Begin MailChimp Signup Form -->
+					<div id="mc_embed_signup">
+					<form action="http://thinkvitamin.us1.list-manage.com/subscribe/post" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+            <input type="hidden" name="u" value="6cd557f316f6c6b5deccf9bc0">
+            <input type="hidden" name="id" value="a9464578f3">
+            <input type="hidden" name="MERGE15" value="blog">
+            <h2><!-- <span class="ss-icon">&#x2709;</span> -->Stay Updated</h2>
+            <p>
+              Sign up for our newsletter, and we'll send you news and tutorials
+              on web design, coding, business, and more! <strong>You'll also receive these
+              great gifts:</strong>
+            </p>
+            <ul class="newsletter-benefits">
+							<li>
+								<span class="ss-icon check">check</span>
+								<span class="benefit"><strong>Art and the Web: Line, Shape, and Form</strong> - An eBook by Treehouse Teacher Nick Pettit.</span>
+              </li>
+              <li>
+                <span class="ss-icon check">check</span>
+                <span class="benefit"><strong>On Freelancing</strong> - An audiobook about running your own business by Simon Collison.</span>
+              </li>
+							<li>
+								<span class="ss-icon check">check</span>
+								<span class="benefit"><strong>Cubano</strong> - A confident, yet friendly display sans serif font by Chandler Van De Water.</span>
+							</li>
+							<li>
+								<span class="ss-icon check">check</span>
+								<span class="benefit"><strong>Stock Photograph Set</strong> - 25 stunning photographs by Mike Kus. </span>
+							</li>
+              <li class="last">
+								<span class="ss-icon check">check</span>
+								<span class="benefit"><strong>Background Patterns Set</strong> - 28 background pattern images by Mike Kus. </span>
+							</li>
+					</ul>
+          <div class="mc-field-group">
+						<label for="mce-FNAME">First Name </label>
+						<input type="text" value="" name="FNAME" class="required" placeholder="First Name" id="mce-FNAME">
+						<span class="ss-icon">👤</span>
+					</div>	
+					<div class="mc-field-group">
+						<label for="mce-EMAIL">Email Address </label>
+						<input type="email" value="" name="EMAIL" class="required email" placeholder="Email Address" id="mce-EMAIL">
+						<span class="ss-icon">✉</span>
+					</div>
+						<div id="mce-responses" class="clear">
+							<div class="response" id="mce-error-response" style="display:none"></div>
+							<div class="response" id="mce-success-response" style="display:none"></div>
+						</div>	<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+					</form>
+					</div>
+					<!--End mc_embed_signup-->
+				</div>
+				</div>
+			<div class="module">
+				<h3>Related Articles</h3>
+				<ul>
+					<li class="ss-stop"><a href="http://blog.teamtreehouse.com/create-custom-html-elements-2">How to Create Custom HTML Elements</a></li><li class="ss-stop"><a href="http://blog.teamtreehouse.com/introduction-html-imports">An Introduction to HTML Imports</a></li><li class="ss-stop"><a href="http://blog.teamtreehouse.com/exploring-javascript-device-apis">Exploring the JavaScript Device APIs</a></li><li class="ss-stop"><a href="http://blog.teamtreehouse.com/using-localforage-offline-data-storage">Using localForage for Offline Data Storage</a></li><li class="ss-stop"><a href="http://blog.teamtreehouse.com/create-ajax-contact-form">How to Create an AJAX Contact Form</a></li><li class="ss-stop"><a href="http://blog.teamtreehouse.com/3-lessons-javascript-output-coffeescript">3 Lessons from the JavaScript Output of CoffeeScript</a></li><li class="ss-stop"><a href="http://blog.teamtreehouse.com/uploading-files-ajax">Uploading Files with AJAX</a></li><li class="ss-stop"><a href="http://blog.teamtreehouse.com/registering-protocol-handlers-web-applications">Registering Protocol Handlers for Your Web Applications</a></li><li class="ss-stop"><a href="http://blog.teamtreehouse.com/getting-started-speech-synthesis-api">Getting Started with the Speech Synthesis API</a></li><li class="ss-stop"><a href="http://blog.teamtreehouse.com/jquery-popular-javascript-library">Why jQuery is the Most Popular JavaScript Library</a></li>				</ul>
+			</div>
+
+
+						<div class="module treehouse-projects">
+				<h3>Treehouse Project</h3>
+				<div class="item">
+					<h4><a href="http://teamtreehouse.com/library/programming-2/build-a-simple-version-of-facebook?cid=1000">Build a Simple Ruby on Rails Application</a></h4>
+						<a href="http://teamtreehouse.com/library/programming-2/build-a-simple-version-of-facebook?cid=1000">
+							<img src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/simple-facebook.jpg">
+						</a>
+					<p>This project will walk us through creating a social networking web application with features similar to Facebook. Ruby on Rails is a web application framework which makes it easy and quick to build dynamic web sites.</p>
+					<a class="button blue" href="http://teamtreehouse.com/library/programming-2/build-a-simple-version-of-facebook?cid=1000">Learn More</a>
+				</div>
+			</div>
+
+						<div class="module">
+				<div class="treehouse-show">
+					<a href="http://www.youtube.com/playlist?list=PLFDA5B0CD72326128&feature=plcp"><img src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/treehouse-show.jpg"></a>
+				</div>
+			</div>						<div class="module">
+				<div class="facebook-feature">
+					<div class="fb-like fb_iframe_widget" data-href="http://www.facebook.com/TeamTreehouse" data-send="false" data-width="225" data-show-faces="false" data-colorscheme="dark" data-font="lucida grande" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;color_scheme=dark&amp;font=lucida%20grande&amp;href=http%3A%2F%2Fwww.facebook.com%2FTeamTreehouse&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=225"><span style="vertical-align: top; width: 0px; height: 0px;"><iframe name="fca0eaa18" width="225px" height="1000px" frameborder="0" allowtransparency="true" scrolling="no" title="fb:like Facebook Social Plugin" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/like(1).html" style="border: none; visibility: visible; width: 0px; height: 0px;"></iframe></span></div>
+				</div>
+			</div>
+		</div><!-- #secondary .widget-area -->
+
+	</div><!-- #main -->
+
+	<footer id="colophon" role="contentinfo">
+		<div class="wrap">
+		<div id="inner">
+
+			<div class="backtotop ss-up"><a href="">Back to Top</a></div>
+
+			<div class="stripes">
+				<span class="stripe item1"></span>
+				<span class="stripe item2"></span>
+				<span class="stripe item3"></span>
+				<span class="stripe item4"></span>
+				<span class="stripe item5"></span>
+				<span class="stripe item6"></span>
+				<span class="stripe item7"></span>
+				<span class="stripe item8"></span>
+				<span class="stripe item9"></span>
+				<span class="stripe item10"></span>
+				<span class="stripe item11"></span>
+				<span class="stripe item12"></span>
+				<span class="stripe item13"></span>
+				<span class="stripe item14"></span>
+				<span class="stripe item15"></span>
+				<span class="stripe item16"></span>
+				<span class="stripe item17"></span>
+				<span class="stripe item18"></span>
+				<span class="stripe item19"></span>
+				<span class="stripe item20"></span>
+				<span class="stripe item21"></span>
+				<span class="stripe item22"></span>
+				<span class="stripe item23"></span>
+				<span class="stripe item24"></span>
+				<span class="stripe item25"></span>
+				<span class="stripe item26"></span>
+				<span class="stripe item27"></span>
+				<span class="stripe item28"></span>
+				<span class="stripe item29"></span>
+				<span class="stripe item30"></span>
+				<span class="stripe item31"></span>
+				<span class="stripe item32"></span>
+				<span class="stripe item33"></span>
+				<span class="stripe item34"></span>
+				<span class="stripe item35"></span>
+				<span class="stripe item36"></span>
+				<span class="stripe item37"></span>
+				<span class="stripe item38"></span>
+				<span class="stripe item39"></span>
+				<span class="stripe item40"></span>
+				<span class="stripe item41"></span>
+				<span class="stripe item42"></span>
+				<span class="stripe item43"></span>
+				<span class="stripe item44"></span>
+				<span class="stripe item45"></span>
+				<span class="stripe item46"></span>
+				<span class="stripe item47"></span>
+				<span class="stripe item48"></span>
+				<span class="stripe item49"></span>
+				<span class="stripe item50"></span>
+			</div>
+
+			<div class="upper">
+				<h2>Continue Learning</h2>
+				<h3>Treehouse is the best way to learn technology skills that can change your life.</h3>
+				<div class="signup">
+					<a href="https://teamtreehouse.com/subscribe/plans?cid=1000">
+						<img id="signup-alt" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/signup-alt2x.png">
+						<img id="signup-default" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/signup2x.png">
+					</a>
+				</div>
+			</div>
+			<div class="lower">
+				<div class="item">
+					<h3><a href="http://teamtreehouse.com/library/websites/build-a-simple-website?cid=1000">Build a Website</a></h3>
+					<p>Get online and worldwide! You'll have a strong foundation to building your website with an introduction to basic front end web development. Start off with an introduction to text editors and basic HTML tags, then move on to more advanced HTML skills.</p>
+					<a href="http://teamtreehouse.com/library/websites/build-a-simple-website?cid=1000" class="button blue">Learn More</a>
+				</div>
+				<div class="item">
+					<h3><a href="http://teamtreehouse.com/library/business/how-to-start-a-business?cid=1000">Start a Business</a></h3>
+					<p>Bring your big idea to life! Learn how to start a company on the right foot with an introduction to basic business concepts, including corporate structure, marketing, finance, and accounting. Then you’re ready for more advanced business strategies.</p>
+					<a href="http://teamtreehouse.com/library/business/how-to-start-a-business?cid=1000" class="button blue">Learn More</a>
+				</div>
+				<div class="item">
+					<h3><a href="http://teamtreehouse.com/library/programming-2/build-a-simple-version-of-facebook?cid=1000">Learn to Code</a></h3>
+					<p>Have a big idea that will change the web? Learn how to code it by building a simple version of Facebook. Along the way, you’ll learn technologies like Ruby on Rails, and this project will give you all the tools you need to build a wide range of web apps.</p>
+					<a href="http://teamtreehouse.com/library/programming-2/build-a-simple-version-of-facebook?cid=1000" class="button blue">Learn More</a>
+				</div>
+				<div class="item">
+					<h3><a href="http://teamtreehouse.com/library/ios-development/build-a-simple-iphone-app?cid=1000">Build iOS Apps</a></h3>
+					<p>More than 30 billion apps have been downloaded from Apple’s app store. See how to take your own app idea from concept to reality on a step-by-step tour of how to build a fun and simple iPhone app. You’ll learn the language, tools and related concepts to get your app ready to download.</p>
+					<a href="http://teamtreehouse.com/library/ios-development/build-a-simple-iphone-app?cid=1000" class="button blue">Learn More</a>
+				</div>
+				<div class="item last">
+					<h3><a href="http://teamtreehouse.com/library/android-development/build-a-simple-android-app?cid=1000">Build Android Apps</a></h3>
+					<p>Get on the fastest growing mobile platform! We'll show you how to build cool Android apps step-by-step. You'll see exactly how to build a finished app with touch &amp; motion and simple animations. Along the way you’ll learn the Java language and the Android SDK.</p>
+					<a href="http://teamtreehouse.com/library/android-development/build-a-simple-android-app?cid=1000" class="button blue">Learn More</a>
+				</div>
+			</div>
+				<ul class="nav">
+        			<li><a href="http://teamtreehouse.com/about">About Treehouse</a></li>
+        			<li><a href="http://teamtreehouse.com/jobs">Jobs</a></li>
+        			<li><a href="http://teamtreehouse.com/terms">Terms &amp; Conditions</a></li>
+        			<li><a href="http://teamtreehouse.com/privacy">Privacy Policy</a></li>
+        			<li><a href="mailto:hello@teamtreehouse.com">Contact Us</a></li>
+      			</ul>
+			<div class="mission">
+        		<h1 class="footer-logo"><img src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/logo-blog2x(1).png"></h1>
+        		<p>Our mission is to bring affordable Technology education to people everywhere, in order to help them achieve their dreams and change the world.</p>
+        		<span class="note">©2012 Treehouse Island, Inc.</span>
+      		</div>
+		</div><!-- #inner -->
+		</div><!-- #wrap -->
+	</footer><!-- #colophon -->
+
+</div><!-- #page -->
+
+<script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName('script')[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0012/5204.js";
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+</script>
+<script>function hefo_popup(url, width, height) {
+var left = Math.round(screen.width/2-width/2); var top = 0;
+if (screen.height > height) top = Math.round(screen.height/2-height/2);
+window.open(url, "share", "scrollbars=yes,resizable=yes,toolbar=no,location=yes,width=" + width + ",height=" + height + ",left=" + left + ",top=" + top);
+return false;
+}</script>
+    <script>
+      // Select unicode values onclick.
+      (function(){function c(){if(document.body.createTextRange){var a=document.body.createTextRange();a.moveToElementText(this);a.select()}else if(window.getSelection){var b=window.getSelection(),a=document.createRange();a.selectNodeContents(this);b.removeAllRanges();b.addRange(a)}}for(var b=Array.prototype.slice.call(document.getElementsByClassName("unicode")),a=Array.prototype.slice.call(document.getElementsByClassName("css")),b=b.concat(a),a=b.length-1;0<=a;a--)b[a].addEventListener("click",c,!1)})();
+    </script>
+
+    <script src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/ss-standard.js"></script>
+    <script src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/ss-social.js"></script>
+
+
+<div class="dd_outer" style="position: fixed;"><div class="dd_inner" style="width: 843px;"><div id="dd_ajax_float" style="position: absolute; top: 30px; left: -95px; display: block;"><div class="dd_button_v"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/tweet_button.1397165098.html" class="twitter-share-button twitter-tweet-button twitter-count-vertical" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 57px; height: 62px;"></iframe><script type="text/javascript" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/widgets.js"></script></div><div style="clear:left"></div><div class="dd_button_v"><script type="text/javascript" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/button.js"></script><iframe scrolling="no" frameborder="0" class="buffer-button" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/saved_resource.html" style="border: none; width: 55px; height: 62px;"></iframe></div><div style="clear:left"></div><div class="dd_button_v"><script src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/all.js"></script><fb:like href="http://blog.teamtreehouse.com/the-beginners-guide-to-three-js" send="false" show_faces="false" layout="box_count" width="50" class=" fb_iframe_widget" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;href=http%3A%2F%2Fblog.teamtreehouse.com%2Fthe-beginners-guide-to-three-js&amp;layout=box_count&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=50"><span style="vertical-align: top; width: 0px; height: 0px;"><iframe name="f12afc3b34" width="50px" height="1000px" frameborder="0" allowtransparency="true" scrolling="no" title="fb:like Facebook Social Plugin" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/like.html" style="border: none; visibility: visible; width: 0px; height: 0px;"></iframe></span></fb:like></div><div style="clear:left"></div><div class="dd_button_v"><script type="text/javascript" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/plusone.js" gapi_processed="true"></script><div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background-color: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 50px; height: 60px; background-position: initial initial; background-repeat: initial initial;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 50px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 60px;" tabindex="0" vspace="0" width="100%" id="I0_1397685483941" name="I0_1397685483941" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/fastbutton.html" data-gapiattached="true" title="+1"></iframe></div></div><div style="clear:left"></div><div class="dd_button_v"><script type="text/javascript" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/in.js"></script><div class="dd-linkedin-share"><div data-url="http://blog.teamtreehouse.com/the-beginners-guide-to-three-js" data-counter="top"><span class="IN-widget" style="line-height: 1; vertical-align: baseline; display: inline-block; text-align: center;"><span style="padding: 0px !important; margin: 0px !important; text-indent: 0px !important; display: inline-block !important; vertical-align: baseline !important; font-size: 1px !important;"><span id="li_ui_li_gen_1397685484847_1-container" class="IN-top"><span id="li_ui_li_gen_1397685484847_1" class="IN-top"><span id="li_ui_li_gen_1397685484847_1-inner" class="IN-top"><span id="li_ui_li_gen_1397685484847_1-content" class="IN-top">15</span></span></span></span></span><br><span style="padding: 0px !important; margin: 0px !important; text-indent: 0px !important; display: inline-block !important; vertical-align: baseline !important; font-size: 1px !important;"><span id="li_ui_li_gen_1397685484838_0"><a id="li_ui_li_gen_1397685484838_0-link" href="javascript:void(0);"><span id="li_ui_li_gen_1397685484838_0-logo">in</span><span id="li_ui_li_gen_1397685484838_0-title"><span id="li_ui_li_gen_1397685484838_0-mark"></span><span id="li_ui_li_gen_1397685484838_0-title-text">Share</span></span></a></span></span></span><script type="IN/Share+init" data-url="http://blog.teamtreehouse.com/the-beginners-guide-to-three-js" data-counter="top"></script></div></div></div><div style="clear:left"></div></div></div></div><iframe name="oauth2relay349391649" id="oauth2relay349391649" src="./The Beginner's Guide to three.js   Treehouse BlogTreehouse Blog_files/postmessageRelay.html" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe><audio id="vocapp-audio-dummy" preload="auto"></audio></body></html>
