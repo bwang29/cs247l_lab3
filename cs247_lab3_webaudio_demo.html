@@ -12,18 +12,22 @@
 
   <script type="text/javascript">
 
+  // ---------------- midi player
+
   $(document).ready(function(){
     MIDI.loadPlugin({
       soundfontUrl: "./soundfont/",
       instrument: "acoustic_grand_piano",
       callback: function() {
         MIDI.setVolume(0, 127);
-        play_note(60);
       }
     });
   });
 
-  // try play_note in your console
+  // try play_note in your console, play_note(0)
+  //  MIDI.noteToKey
+  // Object {21: "A0", 22: "Bb0", 23: "B0", 24: "C1", 25: "Db1", 26: "D1", 27: "Eb1", 28: "E1", 29: "F1", 30: "Gb1", 31: "G1", 32: "Ab1", 33: "A1", 34: "Bb1", 35: "B1", 36: "C2", 37: "Db2", 38: "D2", 39: "Eb2", 40: "E2", 41: "F2", 42: "Gb2", 43: "G2", 44: "Ab2", 45: "A2", 46: "Bb2", 47: "B2", 48: "C3", 49: "Db3", 50: "D3", 51: "Eb3", 52: "E3", 53: "F3", 54: "Gb3", 55: "G3", 56: "Ab3", 57: "A3", 58: "Bb3", 59: "B3", 60: "C4", 61: "Db4", 62: "D4", 63: "Eb4", 64: "E4", 65: "F4", 66: "Gb4", 67: "G4", 68: "Ab4", 69: "A4", 70: "Bb4", 71: "B4", 72: "C5", 73: "Db5", 74: "D5", 75: "Eb5", 76: "E5", 77: "F5", 78: "Gb5", 79: "G5", 80: "Ab5", 81: "A5", 82: "Bb5", 83: "B5", 84: "C6", 85: "Db6", 86: "D6", 87: "Eb6", 88: "E6", 89: "F6", 90: "Gb6", 91: "G6", 92: "Ab6", 93: "A6", 94: "Bb6", 95: "B6", 96: "C7", 97: "Db7", 98: "D7", 99: "Eb7", 100: "E7", 101: "F7", 102: "Gb7", 103: "G7", 104: "Ab7", 105: "A7", 106: "Bb7", 107: "B7", 108: "C8"}
+
   function play_note(note){
     var delay = 0; // play one note every quarter second
     var note = note; // the MIDI note
@@ -31,6 +35,87 @@
     // play the note
     MIDI.noteOn(0, note, velocity, delay);
     // MIDI.noteOff(0, note, delay + 0.75);
+  }
+
+
+  //----------------- web audio
+  var sound_source, audio_context, buffer_list_playable,buffer_loader;
+
+  $(document).ready(function(){
+    sound_source = ["sound/8bit_stab_5.ogg","sound/8bit_stab_6.ogg","sound/8bit_stab_7.ogg"]
+    audio_context = new webkitAudioContext();
+    buffer_list_playable = [];
+    buffer_loader = new BufferLoader(audio_context,sound_source,buffer_loading_finished);
+    buffer_loader.load();
+  });
+
+
+  function buffer_loading_finished(bufferList) {
+    buffer_list_playable = bufferList;
+    // play sound
+  }
+
+  // try play_sound in your console, play_sound(0)
+  function play_sound(index){
+    player = audio_context.createBufferSource();
+    player.buffer = buffer_list_playable[index];
+    gain_node = audio_context.createGainNode();
+
+    player.connect(gain_node);
+    gain_node.gain.value = 0.5;
+
+    gain_node.connect(audio_context.destination);
+    player.start(0);
+  }
+
+
+  // buffer loader class
+
+  function BufferLoader(context, urlList, callback) {
+    this.context = context;
+    this.urlList = urlList;
+    this.onload = callback;
+    this.bufferList = new Array();
+    this.loadCount = 0;
+  }
+
+  BufferLoader.prototype.loadBuffer = function(url, index) {
+    // Load buffer asynchronously
+    var request = new XMLHttpRequest();
+    request.open("GET", url, true);
+    request.responseType = "arraybuffer";
+
+    var loader = this;
+
+    request.onload = function() {
+      // Asynchronously decode the audio file data in request.response
+      loader.context.decodeAudioData(
+        request.response,
+        function(buffer) {
+          if (!buffer) {
+            alert('error decoding file data: ' + url);
+            return;
+          }
+          loader.bufferList[index] = buffer;
+          if (++loader.loadCount == loader.urlList.length)
+            loader.onload(loader.bufferList);
+        },
+        function(error) {
+          console.error('decodeAudioData error', error);
+        }
+      );
+    }
+
+    request.onerror = function() {
+      alert('BufferLoader: XHR error');
+    }
+
+    request.send();
+  }
+
+  BufferLoader.prototype.load = function() {
+    for (var i = 0; i < this.urlList.length; ++i)
+    this.loadBuffer(this.urlList[i], i);
   }
 
   </script>
