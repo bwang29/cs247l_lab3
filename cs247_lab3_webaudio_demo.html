@@ -1,0 +1,41 @@
+<html>
+<head>
+  <title></title>
+  <script type="text/javascript" src="./js/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="./js/MIDI/AudioDetect.js"></script>
+  <script type="text/javascript" src="./js/MIDI/LoadPlugin.js"></script>
+  <script type="text/javascript" src="./js/MIDI/Plugin.js"></script>
+  <script type="text/javascript" src="./js/MIDI/Player.js"></script>
+  <script type="text/javascript" src="./js/Window/DOMLoader.XMLHttp.js"></script>
+  <script type="text/javascript" src="./inc/Base64.js"></script>
+  <script type="text/javascript" src="./inc/base64binary.js"></script>
+
+  <script type="text/javascript">
+
+  $(document).ready(function(){
+    MIDI.loadPlugin({
+      soundfontUrl: "./soundfont/",
+      instrument: "acoustic_grand_piano",
+      callback: function() {
+        MIDI.setVolume(0, 127);
+        play_note(60);
+      }
+    });
+  });
+
+  // try play_note in your console
+  function play_note(note){
+    var delay = 0; // play one note every quarter second
+    var note = note; // the MIDI note
+    var velocity = 127; // how hard the note hits
+    // play the note
+    MIDI.noteOn(0, note, velocity, delay);
+    // MIDI.noteOff(0, note, delay + 0.75);
+  }
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>
