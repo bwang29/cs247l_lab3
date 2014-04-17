@@ -1,0 +1,78 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>City 0.1</title>
+		<style>
+			body {
+				background-color: #d8e7ff;
+				font-family: Monospace;
+				cursor: url(cursor.png), auto;
+				margin: 0;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<script src="three.min.r59.js"></script>
+		<script src="FirstPersonControls.js"></script>
+		<script>
+			var scene, camera, renderer;
+			var light, controls;
+			var lastTime;
+			init();
+			animate();
+
+			function init() {
+				renderer = new THREE.WebGLRenderer( { antialias: false, alpha: false } );
+				renderer.setClearColor( 0xd8e7ff );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				document.body.appendChild( renderer.domElement );
+
+				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 3000 );
+				camera.position.y = 80;
+
+				// add some controls
+
+				scene = new THREE.Scene();
+
+				// add some fog
+
+				// add some light
+
+				// ground
+				var plane = new THREE.Mesh( new THREE.PlaneGeometry( 2000, 2000 ), new THREE.MeshBasicMaterial( { color: 0x101018 } ) );
+				plane.rotation.x = - 90 * Math.PI / 180;
+				scene.add( plane );
+
+				// the basic building block
+				var geometry = new THREE.CubeGeometry( 1, 1, 1 );
+				geometry.applyMatrix( new THREE.Matrix4().makeTranslation( 0, 0.5, 0 ) );
+
+				var building = new THREE.Mesh( geometry );
+				var city = new THREE.Geometry();
+
+				// enhance some shadows
+
+				for ( var i = 0; i < 20000; i ++ ) {
+
+					// generate the cities
+
+					// assign some colors
+
+					THREE.GeometryUtils.merge( city, building );
+				}
+
+				var mesh = new THREE.Mesh( city, new THREE.MeshLambertMaterial( {vertexColors: THREE.VertexColors } ) );
+				scene.add( mesh );
+
+				// update control
+
+			}
+
+			function animate() {
+				requestAnimationFrame( animate );
+				var time = performance.now() / 1000;
+				// update control
+				renderer.render( scene, camera );
+
+			}
+		</script>
+</body></html>
